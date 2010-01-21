@@ -1,0 +1,167 @@
+<BOUCLE_principale(ARTICLES) {id_article}>
+
+<html>
+<head>
+<!-- titre de la page -->
+<title>#NOM_SITE_SPIP &gt; [(#TITRE)]</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<!-- description de l'article -->
+<META NAME="Description" CONTENT='[(#DESCRIPTIF|supprimer_tags|texte_script)]'>
+
+<!-- mots-clés attachés à l'article -->
+<meta name="Keywords" content="<BOUCLE_keywords(MOTS){id_article}{", "}>#TITRE</BOUCLE_keywords>">
+
+<!-- auteurs de l'article -->
+<meta name="Author" content="<BOUCLE_author(AUTEURS){id_article}{", "}>#NOM</BOUCLE_author>">
+<link href="eva_styles.php3" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+<?php   $ze_article = "#ID_ARTICLE";  ?>
+<table width="750" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td valign="top"><table width="100%" class="bloc_titre">
+        <tr> 
+          <B_premier_art>
+          <td width="1" valign="bottom"> 
+            <!--bouton de retour au premier article de la liste-->
+            <BOUCLE_premier_art(ARTICLES){id_rubrique}{par num titre}{0,1}>
+            <?php
+	if ("#ID_ARTICLE" != "$ze_article"){
+	?>
+            <a href="#URL_ARTICLE" title="Premier article : [(#TITRE)]" ><img src="images/prec_rapid.gif" alt="Premier article : [(#TITRE)]" border="0"></a> 
+            <?php
+	}
+	?>
+            </BOUCLE_premier_art>
+          </td>
+          </B_premier_art>
+          <B_art_prec>
+          <td width="1" valign="bottom"> 
+            <!--bouton de retour à l'article précédent-->
+            <BOUCLE_art_prec(ARTICLES){id_rubrique}{par num titre}>
+            <?php
+		if ($ze_article == #ID_ARTICLE) {
+			echo stripslashes("$art_prec");
+		}
+		$art_prec = "
+            <a href='#URL_ARTICLE' title='Article pr&eacute;c&eacute;dent : [(#TITRE)]' ><img src='images/prec.gif' alt='Article pr&eacute;c&eacute;dent : [(#TITRE)]' border='0'></a> 
+            ";
+		?>
+            </BOUCLE_art_prec>
+          </td>
+          </B_art_prec>
+          [ 
+          <td width="1"> 
+            <!-- insertion du logo de l'article (sinon celui de la rubrique) -->
+            (#LOGO_ARTICLE_RUBRIQUE)</td>
+          ] 
+          <td width="100%" align="left"> 
+            <!-- affichage du sur-titre, titre, sous-titre,  -->
+            <font size="2"><strong>[(#SURTITRE)<br>
+            ][<font size="5">(#TITRE)</font>][<br>
+            (#SOUSTITRE)]</strong></font></td>
+          <td width="1" valign="bottom"> 
+            <!--bouton aller à l'article suivant-->
+            <BOUCLE_art_suiv(ARTICLES){id_rubrique}{par num titre}>
+            <?php
+		$texte_suiv = "
+            <a href='#URL_ARTICLE' title='Article suivant : [(#TITRE)]' ><img src='images/suiv.gif' alt='Article suivant : [(#TITRE)]' border='0'></a> 
+            ";
+		if ($ze_article == $article_prec) {
+			echo stripslashes("$texte_suiv");
+		}
+		$article_prec = #ID_ARTICLE;
+		?>
+            </BOUCLE_art_suiv>
+          </td>
+          <B_art_suiv>
+          <td width="1" valign="bottom"> 
+            <!--bouton aller au dernier article de la liste-->
+            <BOUCLE_dernier_art(ARTICLES){id_rubrique}{par num titre}{inverse}{0,1}>
+            <?php
+	if ("#ID_ARTICLE" != "$ze_article"){
+	?>
+            <a href="#URL_ARTICLE" title="Dernier article : [(#TITRE)]" ><img src="images/suiv_rapid.gif" alt="Dernier article : [(#TITRE)]" border="0"></a> 
+            <?php
+	}
+	?>
+            </BOUCLE_dernier_art>
+          </td>
+          </B_art_suiv>
+        </tr>
+      </table></td>
+  </tr>
+  <tr> 
+    <td valign="top"> <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr> 
+          <td class="trait_haut"> 
+            <!-- affichage du chapo, texte, post-scriptum et notes de bas de page de l'article -->
+            [ 
+            <div class="chapo">(#CHAPO|smileys)</div>
+            ][ 
+            <div class="texte">(#TEXTE|smileys)</div>
+            ][ 
+            <div class="ps">(#PS|smileys)</div>
+            ][ 
+            <div class="notes">(#NOTES|smileys)</div>
+            ] <br>
+            <!-- des documents attachés à l'article -->
+            <B_documents_joints>
+            <div class="bloc_titre" align="center">Documents li&eacute;s</div>
+            <table width="100%" class="bloc_contenu">
+              <BOUCLE_documents_joints(DOCUMENTS) {id_article} {mode=document} {doublons}>
+              <tr> 
+                <td> <a href="#URL_DOCUMENT">[(#LOGO_DOCUMENT|left)][(#TITRE)]</a><font size="2">[<br>
+                  (#DESCRIPTIF|smileys)][<br>
+                  (#TYPE_DOCUMENT) -] [(#TAILLE|taille_en_octets)][, (#LARGEUR) 
+                  x #HAUTEUR pixels]</font> </td>
+              </tr>
+              </BOUCLE_documents_joints>
+            </table>
+            </B_documents_joints>
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td valign="top">
+      <table width="100%" class="bloc_titre">
+        <tr> 
+          <td align="left"><font size="2"> 
+            <!-- affichage de la date en toutes lettres -->
+            [Le (#DATE|nom_jour)][ (#DATE|jour)][ (#DATE|nom_mois)][ (#DATE|annee).] 
+            </font><B_auteurs>
+            </td>
+          <td align="right"><font size="2"> 
+            <!-- affichage des auteurs de l'article, le lien renvoie vers la fiche de l'auteur -->
+            Par : 
+            <BOUCLE_auteurs(AUTEURS){id_article}{", "}>
+            [<a href="auteur.php3?id_auteur=#ID_AUTEUR">(#NOM)</a>] 
+            </BOUCLE_auteurs>
+            </font>
+            </B_auteurs></td>
+        </tr>
+      </table>
+      <!-- arborescence -->
+      <font size="2"> Vous &ecirc;tes ici : <a href="#URL_SITE_SPIP">Accueil</a> 
+      <BOUCLE_hier(HIERARCHIE)>
+      <img src="img_pack/deplierhaut.gif"> <a href="#URL_RUBRIQUE" [title="(#DESCRIPTIF|supprimer_tags)"]>[(#TITRE)]</a> 
+      </BOUCLE_hier>
+      <img src="img_pack/deplierhaut.gif">[(#TITRE)] </font> 
+      <br>
+      <br>
+      <!-- insertion du pied de page -->
+      <INCLURE(pied.php3)>
+    </td>
+  </tr>
+</table>
+</body>
+</html>
+
+</BOUCLE_principale>
+<INCLURE(page-404.php3)>
+<//B_principale>

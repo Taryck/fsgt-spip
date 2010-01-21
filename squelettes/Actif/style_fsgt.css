@@ -1,0 +1,618 @@
+/***************************************/
+/* FEUILLE MISE EN FORME DU SITE FSGT  */
+/***************************************/
+
+
+/*
+ * BARRE DE RACCOURCIS
+ */
+
+a.spip_barre img {
+	border-left: 1px solid #ffffff;
+	border-top: 1px solid #ffffff;
+	border-right: 1px solid #aa9966;
+	border-bottom: 1px solid #aa9966;
+	padding: 3px;
+	background-color: #FFDDAA;
+}
+a.spip_barre:hover img {
+	border: 1px solid #808080;
+	padding: 3px;
+	background-color: #f8f8f4;
+}
+
+div.cadre-padding {
+	overflow: hidden;
+}
+
+.cadre-e {
+	background-color: #ddd;
+	padding-left: 12px;
+	padding-right: 12px;
+	border-top: 1px solid #aaa;
+	border-left: 1px solid #aaa;
+	border-bottom: 1px solid #fff;
+	border-right: 1px solid #fff;
+	-moz-border-radius: 20px;
+}
+
+.cadre-e div.cadre-titre {
+	background-color: ##ENV{couleur_claire,edf3fe};
+	border-bottom: 1px solid #666;
+	color: #000;	
+}
+
+.cadre-e-noir {
+	border: 1px solid #666;
+	-moz-border-radius: 20px;
+}
+/******************************************/
+/* ZONES D'ECRITURE ET CADRES             */ 
+/******************************************/
+body {
+	background-color:/*fond_page*/ white ;
+	margin: 0;
+	padding: 0;
+	font-family: Verdana,Arial,sans-serif,Trebuchet MS, Tahoma;
+	text-align: center; /* pour corriger le bug de centrage IE */
+	}
+
+.structure {
+	display: none;
+}
+
+
+
+#conteneur { /* CONTENEUR DES AUTRES BLOCS */
+	width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left; /* on rétablit l'alignement normal du texte */ 
+  border-left: 1px rgb(182,182,182) solid;
+  border-right: 1px rgb(182,182,182) solid; 
+  border-bottom: 1px rgb(182,182,182) solid;
+}
+
+#head1 { /* BANDEAU SUPÉRIEUR AVEC PHOTOS */
+	width:auto;
+	height: auto;
+	}
+	
+#head2 { /* BANDEAU INFÉRIEUR POUR LE MENU SUPERIEUR */
+	background-color: #003366;
+  width:auto; 
+	height: 20px;
+	padding: 0;
+	margin: 0;
+	text-align: center;
+	}
+	
+#menu { /* ZONE DE MENU LATERAL GAUCHE url('../IMG/logos/rayures-gris.gif') */ 
+		background-image: ;
+		float:left;
+		width: 150px;
+		padding-left: 0px;
+		padding-right: 0px;
+		padding-top: 0px;
+		padding-bottom: 0px;
+		margin: 0;
+		padding: 0;
+}
+
+#nouveaute { /* ZONE NOUVEAUTÉS DANS LA PAGE D'ACCUEIL */ 
+		float: left;
+		width: 600px;
+/*		width: auto;  Marche pas pousse les autres DIB */
+		padding-left: 10px;
+		padding-right:  5px;
+		padding-top: 10px;
+		padding-bottom: 5px;
+		border-left: 1px rgb(182,182,182) solid;
+		margin: 0;
+}
+
+#actualite { /* ZONE ACTUALITÉ DANS LA PAGE D'ACCUEIL */
+		float: right;
+		width: 200px;
+/*    padding: 0;*/
+		padding-left: 0px;
+		padding-right: 5px;
+		padding-top: 10px;
+		padding-bottom: 5px;
+    margin: 0;
+    		
+}
+
+#rubrique1 { /* ZONE de contenu central ds les rubriques */ 
+		float: left;
+		width: 660px;
+		padding-left: 10px;
+		padding-right: 0px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		margin: 0 0 0 0;
+		border-left: 1px rgb(182,182,182) solid;
+		}
+		
+#rubriqueVideo{ /* ZONE de contenu central ds les rubriques */ 
+		float: left;
+		width: 810px;
+		padding-left: 10px;
+		padding-right: 0px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		margin: 0 0 0 0;
+		border-left: 1px rgb(182,182,182) solid;
+                
+}
+
+#liens { /* ZONE liens dans les rubriques ou articles */
+		float: right;
+		width: 150px;
+		padding: 0;
+    background-image: url('../IMG/logos/degradGris.jpg');
+    margin: 30px 0 0 0 ;	
+}
+
+#pied { /* ZONE DE PIED DE PAGE */ 
+		clear: both;
+		border-top-style: solid;
+		border-top-width: 1px;
+		border-top-color: rgb(182,182,182);
+		width: 100%;
+		padding-left: 0px;
+		padding-right: 0px;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		margin-left: 0px;
+		margin-right: 0px;
+}		
+
+#telecharger { /* ZONE liens dans les rubriques ou articles */
+		float: right;
+		width: 150px;
+		padding: 2px;
+		margin: 10px 0 10px 10px;		
+    clear: both;
+    background-image: url('../IMG/logos/degradGris.jpg');		
+} /* margin: top right bottom left ; */
+
+#article { /* zone de contenu article */
+    float: left;
+		width: 825px;
+		padding-left: 10px;
+		padding-right: 10px;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		margin: 0;
+		border-left: 1px rgb(182,182,182) solid;
+		
+}
+#breve { /* zone de contenu breve */
+    float: left;
+		width: 825px;
+		padding-left: 10px;
+		padding-right: 10px;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		margin: 0;
+		border-left: 1px rgb(182,182,182) solid;
+}
+#photos-album { /* zone contenu principal pour album photos */
+		text-align: center;
+    width: auto;
+    height: auto;
+		padding: 0;
+    margin: 5px;		
+}
+
+#descriptif-photos { /* ZONE descriptif des photos dans l'album */
+		float: right;
+		width: 30%;
+		padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;		
+}
+.encadre-photos {   
+	 border: none;  
+}
+.hierarchie {
+
+    width: 100%;
+		padding: 0 0 10px 0;
+		margin : 0;
+    border: ;
+    
+}
+.encadre-black {
+	width : 98%;
+	border: 1px #000000 solid;
+	padding: 5px;
+	}
+
+.vignettes { /* zone affichage des vignettes avec scroll*/
+    padding: 4px;
+    height: 100px;
+    width: 97%;
+    border: 1px #666666 solid;
+    overflow: auto;    
+}
+
+.bouton_album {
+    border: none;
+    margin: 20px;
+    padding: 0;
+    text-align: left;
+}
+.imprimer { /* zone imprimer l'article */
+    float: right;     
+    width: auto;
+    padding: 5px 5px 5px 0;
+    border-top: 1px #666666 solid;
+    border-bottom: 1px #666666 solid;
+    
+}
+.spacer {
+  float: right;
+  height:100%;
+  width: 5px; 
+}
+
+.bloc {
+	padding-left: 5px;
+	float: right;
+}
+
+.bloc2{padding-bottom: 5px; padding-top: 5px;}
+  	
+.spip_cadre_sommaire {
+	background-image: url('../IMG/logos/degrade.jpg');	
+}
+
+.spip_cadre_ps  {
+	font-family: ;
+	width : 100%;
+	background-color: #FFFFFF;
+	padding: 5px;
+	border: 1px #666666 solid;
+}
+
+.spip_cadre_liens { /* ZONE POUR LES LIENS DANS LES PAGES RUBRIQUES */
+	font-family: ;
+	background-image: url('../IMG/degradeGris.gif');
+	background-repeat: no-repeat;
+	width: 100%;
+	margin: 0 0 0 0;
+	padding: 5px 2px 5px 2px;
+	text-align: center;
+}
+
+.spip_cadre_pointille1 {
+	font-family: ;
+	width : 25%;
+	padding: 5px;
+	border: 1px #C0C0C0 dashed ;	
+	float: right;
+	clear: right; 	  
+}
+
+.spip_cadre_pointille2 {
+	font-family: ;
+	width : 25%;
+	padding: 5px;
+	border: 1px #C0C0C0 dashed ;
+	float: right;
+	clear: right; 
+}
+
+.spip_encadrer {
+	font-family: ;
+	width : 100%;
+	background-color: #FFFFFF;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-bottom: 10px;
+	border: 1px #666 solid;
+	margin: 0px;
+}
+
+.spip_encadrer_vide {
+	font-family: ;
+	width : 100%;
+	background-color: ;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-bottom: 10px;
+	padding-top: 0;
+	border: 0 ;
+	margin: 0 ;
+	
+}
+.spip_cadre {
+	width : 100%;
+	background-color: #FFFFFF;
+	padding: 5px;
+	
+}
+.bloc_vide {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.filet {
+  width : 100%;
+  background-color: rgb(216,216,216);
+  padding-left: 0;
+	padding-right: 0;
+	padding-bottom: 0;
+	border: 0 ;
+	margin: 0;
+}
+.couleur_fond {background-color: rgb(216,216,216); }
+/*  ------------------------------------------
+/*  Habillage des forums
+/*  ------------------------------------------ */
+.bloc-forum {
+  position: center;
+  font-family: ;
+	width : 100%;		
+	padding-bottom: 5px;
+	border: 2px #666 solid;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+.forum-repondre, .forum-decompte {
+	clear: both;
+	margin-top: 1em;
+	margin-bottom: 0.50em;
+	padding-top: 2px;
+	border-top: 2px solid #CCC;
+	font-size: 0.88em;
+	font-weight: bold; }
+
+/* * Habillage des forums */
+ul.forum { display: block; clear: both; margin: 0; padding: 0; list-style-type: none;}
+.forum-fil { margin-top: 0; list-style-type: none; }
+.forum-fil ul { display: block; margin: 0; padding: 0; margin-left: 0; list-style-type: none;}
+.forum-chapo .forum-titre, .forum-chapo .forum-titre a { display: block; margin: 0; padding: 0; font-weight: bold; text-decoration: none; color: #333; }
+.forum-chapo small {}
+.forum-texte { margin: 0; padding: 0.5em 1em 0 1em; color: #333; font-size: 0.82em; }
+.forum-texte .forum-lien {}
+.forum-texte .forum-repondre-message { margin: 0; padding: 1px 0; text-align: right; }
+
+/* Boite d'un forum : eclaircissement progressif des bords */
+ul .forum-message { border-bottom: ; margin: 0; padding: 0; margin-bottom: 0.80em ; }
+ul ul .forum-message { border: 1px dashed #666; margin: 0.70em;}
+ul ul ul .forum-message { border: 1px dashed #B8B8B8; }
+ul ul ul ul .forum-message { border: 1px dashed #CCC; }
+ul ul ul ul ul .forum-message { border: 1px dashed #E0E0E0; }
+ul ul ul ul ul ul .forum-message { border: 1px dashed #E0E0E0; } 
+
+/* Boite de titre d'un forum : mise en couleur selon la profondeur du forum */
+ul .forum-chapo { border: 0; border-bottom: 1px dotted #B8B8B8; margin: 0; padding: 3px 6px 2px 6px; font-size: 0.88em; background: #C4E0E0; }
+ul ul .forum-chapo { background: #D4E8E8; }
+ul ul ul .forum-chapo { background: #E4F0F0; }
+ul ul ul ul .forum-chapo { background: #F4F8F8; border-bottom: 1px dotted #E0E0E0; }
+ul ul ul ul ul .forum-chapo { background: #FFF; } 
+
+
+/*******************************************************/
+
+.spip_code { }
+
+p.spip_note { }
+
+/* Divers */
+
+
+.spip_puce {
+	
+}
+
+
+/* TABLEAUX */
+table.spip {
+}
+
+table.spip tr.row_first {
+	background-color: #FCF4D0;
+}
+
+table.spip tr.row_odd {
+	background-color: #C0C0C0;
+}
+
+table.spip tr.row_even {
+	background-color: #F0F0F0;
+}
+
+table.spip td {
+	padding: 1px;
+	text-align: left;
+	vertical-align: middle;
+}
+
+hr.spip { }
+b.spip { }
+i.spip { }
+blockquote.spip {
+	margin-left : 40px;
+	margin-top : 10px;
+	margin-bottom : 10px;
+	margin-right: 0px;
+	border : solid 1px #aaaaaa;
+	background-color: #ffffff;
+	padding: 5px;
+}
+
+.trait_bas {
+	border-bottom: 1px solid ;
+	padding-bottom: 4px;
+	margin: 0;
+}
+
+.trait_haut {
+	border-top: 1px dashed black;
+	width: 99%;
+	height:0;
+  padding-bottom: 5px;
+  margin: 0;
+  
+}
+
+div.spip_poesie {
+	margin-left: 10px;
+	padding-left: 10px;
+	border-left: 1px solid #999999;
+}
+div.spip_poesie div {
+	text-indent: -60px;
+	margin-left: 60px;
+}
+
+.spip_surligne { 
+  background-color: #EBEBEB; 
+  width: 100%
+  }
+
+/*  ------------------------------------------
+/*  Habillage des formulaires
+/*  ------------------------------------------ */
+
+/* Correction des styles HTML par defaut */
+.formulaire_spip form, .formulaire_spip fieldset, .formulaire_spip legend, .formulaire_spip label, .formulaire_spip input, .formulaire_spip textarea, .formulaire_spip select, .formulaire_spip option { margin: 0; padding: 0; border: ; background: ; }
+
+.forml { width: 95% ; background-color: #FFF; /*FORMULAIRE*/
+}
+/* Styles des formulaires de Spip */
+
+.bouton_repondre {
+  background-color: #cccccc; 
+  font-size: 90%; 
+  text-align:center;
+  border : solid 1px #aaaaaa;  
+  }
+
+.formrecherche { 
+  width: 74% ; 
+  background-color: #FFFFFF;
+  margin: 10px 2px;
+  padding: 0;
+  
+}
+.bouton_ok {
+  width:15%; 
+  background-color: #FFFFFF; 
+  font-size: 60%; 
+  text-align:center;
+  margin: 5px 0;
+  padding: 0;
+  }
+
+.reponse_formulaire {
+	font-family: Verdana,Arial,Helvetica,sans-serif;
+	font-weight: bold;
+	font-size: 110%;
+	color: red;
+}
+
+.formulaire_spip {
+	text-align: left;
+	font-size: 0.7em;
+	
+}
+
+.formulaire_spip p {
+	margin: 0.5em 0;
+	padding: 0; }
+
+.formulaire_spip fieldset {
+    display: block;
+	margin-left: 0 ;
+	margin-right: 0 ;
+	margin-bottom: 0.5em;
+	margin-top: 0.5em;
+	padding: 0em;
+	border: 1px dotted; }
+	
+.formulaire_spip legend { 
+	font-weight: bold; 
+	padding: 3px;
+	background: #FFF; /* Sinon, superposition dans MSIE */
+}
+
+.formulaire_spip label {}
+.formulaire_spip .forml {
+	width: 99%;
+	padding: 1px;
+	border: 1px solid;
+	font-family: inherit;
+	font-size: inherit; }
+
+.spip_bouton { background-color: #FFCC00;text-align: right;}
+.spip_bouton input {
+	margin: 3px 0;
+	padding: 1px 2px;
+	border: 2px outset;
+	font-weight: bold;
+	float: right; }
+
+/* Reponse du formulaire */
+.reponse_formulaire { font-weight: bold; color: #F00; }
+fieldset.reponse_formulaire { border: 1px dotted; font-weight: normal; }
+
+/* Previsualisation du message */
+fieldset.previsu {
+	padding: 1em;
+	border: 1px solid; }
+
+/* Formulaire de login au forum */
+.formulaire_login_forum .forml { width: 12em; }
+.formulaire_login_forum .spip_logos { float: right; padding-left: 10px; }
+
+/* Choix des mots-clefs */
+.choix_mots { width: 47%; float: left; } 
+.choix_mots label { display: inline; }
+
+/* Formulaire de recherche */
+.formulaire_recherche { text-align: left; width: 100%;}
+.formulaire_recherche label { display: none; }
+
+/* Formulaire inscription */
+.formulaire_inscription {
+width: 100%;
+}
+
+
+/*  ------------------------------------------
+/*  Habillage des petitions
+/*  ------------------------------------------ */
+
+#signatures { clear: both; font-size: 0.77em; }
+
+#signatures h2 {
+	padding: 0.5em;
+	text-align: center;
+	font-size: 1.2em;
+	font-weight: bold; }
+
+#signatures table { width: 100%; margin: 1em 0; }
+#signatures thead { display: none; } /* On n'affiche pas les titres du tableau */
+
+#signatures td.signature-date {
+	background: #E4F0F0;
+	padding: 0.5em;
+	white-space: nowrap; }
+
+#signatures td.signature-nom {
+	background: #ECF4F4;
+	padding: 0.2em;
+	text-align: center;
+	font-weight: bold; }
+
+#signatures td.signature-message {
+	background: #F4F8F8;
+	padding: 0.4em;
+	font-size: 0.96em; }

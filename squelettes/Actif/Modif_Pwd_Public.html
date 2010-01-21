@@ -1,0 +1,34 @@
+#CACHE{0}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="#LANG_DIR" lang="#LANG">
+
+<head>
+<title>[(#NOM_SITE_SPIP|textebrut)]</title>
+	[<meta name="description" content="(#DESCRIPTIF_SITE_SPIP|couper{150}|textebrut)" />]
+	<INCLURE{fond=inc-head}>
+</head>
+
+<body>
+<div id="conteneur">
+		<INCLURE{fond=inc-commun}>    
+  <div id="article"><!-- insertion zone contenu de l'article -->
+   
+		<div style="text-align: center; width: 500px; margin: 0 auto; padding: 3em 0;">
+		<h3 class="spip">
+			#LOGO_SITE_SPIP<br />
+			#NOM_SITE_SPIP<br />
+			<small>Modification de mot de passe</small>
+		</h3>
+
+[Vous êtes connecté en tant que<br />'<b>(#SESSION{'nom'})</b>' #TARYCK<br />
+Etes vous sur de vouloir changer de mot de passe ?<br />
+<a href="#URL_NOUVMDP">OUI</a>&nbsp;&nbsp;<a href="#URL_PAGE{sommaire}">NON</a>]
+
+		</div>	    		
+	</div>  
+
+	<div id="pied"><INCLURE{fond=inc-pied}></div>
+</div>  
+
+</body>
+</html>

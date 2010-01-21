@@ -1,0 +1,81 @@
+<BOUCLE_principale(RUBRIQUES){id_rubrique}>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="#LANG_DIR" lang="#LANG">
+
+<head>
+
+<title>[(#TITRE|textebrut) - ][(#NOM_SITE_SPIP|textebrut)]</title>
+	[<meta name="description" content="(#INTRODUCTION|couper{150}|textebrut)" />]
+	<INCLURE{fond=inc-head}>
+
+	[(#REM) Lien vers le flux RSS de la rubrique ]
+	<link rel="alternate" type="application/rss+xml" title="<:syndiquer_rubrique:>" href="[(#URL_PAGE{backend}|parametre_url{id_rubrique,#ID_RUBRIQUE})]" />
+</head>
+  
+<body>
+		
+  <div id="conteneur">
+		<INCLURE{fond=inc-commun}>
+		
+		<div id="rubrique1"> <!-- zone de contenu centrale -->
+   
+		<INCLURE{fond=inc-rub-hierarchie}{id_rubrique}>
+    	
+		 	    <div class="spip_encadrer_vide">
+  	      [<div class="titre-rubrique">(#TITRE)</div>]
+  		    <!-- margin:hautpx droitepx basx gauchepx; -->
+				  [<div style="float:left; margin:0px 10px 10px 0px;">(#LOGO_RUBRIQUE)</div>]
+  			  [<div class="spip_documents">(#TEXTE|justifier||reduire_image{#CONFIG{FSGT/rub_img_width,400},0})</div>]
+  			  </div>
+      
+      <B_alu_brv> <!-- brève(s) en Une de la rubrique -->
+      <div class="spip_encadrer_vide couleur_fond"><span class="titreEncadre">Principales Brèves</span>  
+ 	   	<div class="trait_haut"></div>
+  		<BOUCLE_alu_brv(BREVES){id_rubrique}{titre_mot=cfg.rub.alaune}{doublons alu_brv}{par date}{inverse}{0,#CONFIG{FSGT/rub_alaune_brv_count,0}}>
+  	   	[<a href="#URL_BREVE" class="petit-titre-sommaire">(#TITRE)</a>][<span class="date"> | (#DATE|affdate)</span><br />]
+  		</BOUCLE_alu_brv>
+  		</div>
+  		</B_alu_brv>
+
+      <B_alu_art> <!-- article(s) en Une de la rubrique -->
+      <div class="spip_encadrer_vide couleur_fond"><span class="titreEncadre">Principaux Articles</span>  
+  		<BOUCLE_alu_art(ARTICLES){id_rubrique}{titre_mot=cfg.rub.alaune}{par date}{inverse}{0,#CONFIG{FSGT/rub_alaune_art_count,0}}{doublons alu_art}>
+  	   	<div class="trait_haut"></div>
+      	 [<div class="cartouche">(#LOGO_ARTICLE|right||reduire_image{#CONFIG{FSGT/rub_img_width,150},0})</div>]
+		 	   [<a href="#URL_ARTICLE" class="petit-titre-sommaire">(#TITRE)</a>][<span class="date"> | (#DATE|affdate)</span>]
+	  	   [<div class="spip_documents">(#INTRODUCTION|justifier)</div>]
+  		</BOUCLE_alu_art>
+  		</div>
+  		</B_alu_art>
+
+      <B_rub_articles><!-- liste de tous les articles de la rubrique courante  -->  		      		    
+         <div class="trait_haut"></div>
+          <ul class="list">
+          	<BOUCLE_rub_articles(ARTICLES){id_rubrique}{doublons alu_art}{par date}{inverse}{pagination #CONFIG{FSGT/rub_art_page,20}}>   			  
+          		<li>[<a href="#URL_ARTICLE" class="petit-titre-sommaire">(#TITRE)</a>][<span class="date"> | (#DATE|affdate)</span>]</li>
+          	</BOUCLE_rub_articles> 		    
+          </ul>
+          <br />
+      	<div class="pagination">[(#PAGINATION{page})]</div>
+      		<br />
+      </B_rub_articles>
+	  	     		 					
+			<INCLURE{fond=inc-forum-rub}{id_rubrique}>
+
+			</div>
+     
+		  <div id="liens"><!-- zone des cadres sous-rubrique, articles, breves, liens -->
+		  
+			<INCLURE{fond=inc-ss-rub}{id_parent}{id_rubrique}>
+			<INCLURE{fond=inc-rub-artpop}{id_rubrique}>
+			<INCLURE{fond=inc-rub-enbref}{id_rubrique}>
+			<INCLURE{fond=inc-rub-site}{id_rubrique}>
+ 		    
+      </div><!-- fin zone des cadres sous-rubrique, breves, liens -->
+   
+    <div id="pied"><INCLURE{fond=inc-pied}></div>
+   
+</div>
+</body>
+</html>
+</BOUCLE_principale>

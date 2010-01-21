@@ -1,0 +1,55 @@
+#CACHE{0}
+
+<!-- descriptif=
+<h4>Config Google Apps</h4>
+Configuration des outils Google utilisés dans le modèle FSGT ([Documentation->http://spip.aide.fsgt.org/]).<br />
+<br />
+<br />
+-->
+<!-- titre=Config Google -->
+
+<form method="post">[(#ENV{_cfg_}|form_hidden)]
+
+<fieldset><legend>Outils Google :</legend>
+	<label>ID tracker <a href="http://www.google.com/analytics/fr-FR/" title="Analyse du traffic sur votre site">Google Analytics</a> (UA-xxxxxxx-x)</label>&nbsp;<input type="text" name="Google_ID_Analytics" maxlength="15" size="15" value="#ENV{pied_ID_Analytics}"><br />
+	<label>ID vérification <a href="http://www.google.com/webmasters/tools/?hl=fr" title="Outils Google pour les Webmestres : controle des lien du site,...">Google tools for Webmaster</a></label>&nbsp;<input type="text" name="Google_ID_WMTools" size="45" value="#ENV{Google_ID_WMTools}"><br />
+	<span style="font-size: 80%;">le code en gras dans l'exemple ci-après : &lt;meta name="verify-v1" content="<b>gQY3YYYj23TkjmMsT2YWfRSYUrd8oel9H8uuPeZO0pI=</b>" /&gt;<br /></span>
+	<br />
+	<fieldset><legend><b>Annonce publicitaires</b> (google AdSense) :</legend>
+Vous permet d'inclure des annonces publicitaires dans vos pages. Vous devez au préalable vous <a href="http://www.google.com/adsense/?hl=fr" target="_blank">inscrire sur AdSense</a> et obtenir des codes HTML à inclure pour vos zones d'annonce<br />
+Vous pouvez voir les différents format d'annonce <a href="https://www.google.com/adsense/adformats" target="_blank">sur cette page</a><br />
+<br /><label><b>Activer globalement la publicité</b></label>&nbsp;<input type="checkbox" name="gads_on" [checked="(#ENV{gads_on})"] /><br /><br />
+Menu latéral : bando largeur <b>maximum 150 pixels</b><br />
+		<label>1er entre rubriques et site</label>&nbsp;<input type="checkbox" name="gads_lat_1_on" [checked="(#ENV{gads_lat_1_on})"] /><br />
+		<TEXTAREA name="gads_lat_1_code" rows="2" cols="50">#ENV{gads_lat_1_code, 'remplacer par code google adsense de type "AdSense pour les pages de contenu"'}</TEXTAREA>
+		<label>2ème entre sites et articles</label>&nbsp;<input type="checkbox" name="gads_lat_2_on" [checked="(#ENV{gads_lat_2_on})"] /><br />
+		<TEXTAREA name="gads_lat_2_code" rows="2" cols="50">#ENV{gads_lat_2_code, 'remplacer par code google adsense de type "AdSense pour les pages de contenu"'}</TEXTAREA>
+		<label>3ème après articles</label>&nbsp;<input type="checkbox" name="gads_lat_3_on" [checked="(#ENV{gads_lat_3_on})"] /><br />
+		<TEXTAREA name="gads_lat_3_code" rows="2" cols="50">#ENV{gads_lat_3_code, 'remplacer par code google adsense de type "AdSense pour les pages de contenu"'}</TEXTAREA>
+		<fieldset><legend>Page "<:accueil_site:>"</legend>
+Bando latéral gauche : bando largeur <b>maximum 200 pixels</b><br />
+			<label>1er Avant "Articles les plus populaires"</label>&nbsp;<input type="checkbox" name="gads_acc_lat_1_on" [checked="(#ENV{gads_acc_lat_1_on})"] /><br />
+			<TEXTAREA name="gads_acc_lat_1_code" rows="2" cols="50">#ENV{gads_acc_lat_1_code, 'remplacer par code google adsense de type "AdSense pour les pages de contenu"'}</TEXTAREA>
+			<label>2ème entre "Articles les plus populaires" et "Dernières mises en ligne"</label>&nbsp;<input type="checkbox" name="gads_acc_lat_2_on" [checked="(#ENV{gads_acc_lat_2_on})"] /><br />
+			<TEXTAREA name="gads_acc_lat_2_code" rows="2" cols="50">#ENV{gads_acc_lat_2_code, 'remplacer par code google adsense de type "AdSense pour les pages de contenu"'}</TEXTAREA>
+			<label>3ème après "Dernières mises en ligne"</label>&nbsp;<input type="checkbox" name="gads_acc_lat_3_on" [checked="(#ENV{gads_acc_lat_3_on})"] /><br />
+			<TEXTAREA name="gads_acc_lat_3_code" rows="2" cols="50">#ENV{gads_acc_lat_3_code, 'remplacer par code google adsense de type "AdSense pour les pages de contenu"'}</TEXTAREA>
+<hr class="spip" /><br />
+Bando horizontal corps : bando largeur <b>maximum 600 pixels</b><br />
+			<label>1er entre "Bienvenu" et "Evenements"</label>&nbsp;<input type="checkbox" name="gads_acc_hrz_1_on" [checked="(#ENV{gads_acc_hrz_1_on})"] /><br />
+			<TEXTAREA name="gads_acc_hrz_1_code" rows="2" cols="50">#ENV{gads_acc_hrz_1_code, 'remplacer par code google adsense de type "AdSense pour les pages de contenu"'}</TEXTAREA>
+			<label>2ème entre "Evenements" et "Zoom"</label>&nbsp;<input type="checkbox" name="gads_acc_hrz_2_on" [checked="(#ENV{gads_acc_hrz_2_on})"] /><br />
+			<TEXTAREA name="gads_acc_hrz_2_code" rows="2" cols="50">#ENV{gads_acc_hrz_2_code, 'remplacer par code google adsense de type "AdSense pour les pages de contenu"'}</TEXTAREA>
+			<label>3ème après "Dernières mises en ligne"</label>&nbsp;<input type="checkbox" name="gads_acc_hrz_3_on" [checked="(#ENV{gads_acc_hrz_3_on})"] /><br />
+			<TEXTAREA name="gads_acc_hrz_3_code" rows="2" cols="50">#ENV{gads_acc_hrz_3_code, 'remplacer par code google adsense de type "AdSense pour les pages de contenu"'}</TEXTAREA>
+Bando horizontal bas : bando largeur <b>maximum 800 pixels</b><br />
+			<label>au dessus du "pied de page"</label>&nbsp;<input type="checkbox" name="gads_acc_bas_on" [checked="(#ENV{gads_acc_bas_on})"] /><br />
+			<TEXTAREA name="gads_acc_bas_code" rows="2" cols="50">#ENV{gads_acc_bas_code, 'remplacer par code google adsense de type "AdSense pour les pages de contenu"'}</TEXTAREA>
+		</fieldset>
+	</fieldset>
+</fieldset>
+
+<input type="submit" name="_cfg_ok" value="<:OK:>" />
+<input type="reset" value="<:Reset:>" />
+<input type="submit" name="_cfg_delete" value="<:Supprimer:>" />
+</form>

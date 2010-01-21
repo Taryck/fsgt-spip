@@ -1,0 +1,35 @@
+<BOUCLE_breve_principal(BREVES) {id_breve}>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="#LANG_DIR" lang="#LANG">
+<head>
+	<title>[(#TITRE|textebrut)][ - (#NOM_SITE_SPIP|textebrut)]</title>
+	[<meta name="description" content="(#INTRODUCTION|couper{150}|attribut_html)" />]
+	<INCLURE{fond=inc-head}>
+</head>
+
+<div id="conteneur">
+		<INCLURE{fond=inc-commun}>    
+   
+    <div id="breve"><!-- insertion zone contenu de l'article -->
+      	 
+[(#REM) BOUCLE_hierarchie pas possible sur base ID_Breve]
+    <div class="imprimer"><!-- "BREVE_PDF.php3?id_article=#ID_ARTICLE" -->
+       <a class="texte1" href="#URL_PAGE{breve-imprim,id_breve=#ID_BREVE}"><img src="#CHEMIN{FSGT/imprimante.gif}" border="0" alt="Version imprimable" /> Imprimer</a><br />
+       <a class="texte1" href="#URL_ARTICLE_PDF"><img src="#CHEMIN{FSGT/pdf.gif}" border="0" /> Version PDF</a>
+    </div> 
+
+  		   [<div class="titre-article2">(#TITRE)</div>] [<div class="date centrer">le (#DATE|affdate)</div><br />]
+  		   <!-- margin:hautpx droitepx basx gauchepx; -->
+  		   [<div style="float:left; margin:0px 10px 10px 0px;">(#LOGO_BREVE)</div>]
+			   [<div class="spip_documents">(#TEXTE)</div>]
+		   
+			<INCLURE{fond=inc-forum-brv}{id_breve}>
+		    
+	  </div>
+	 	    		
+    <div id="pied"><INCLURE{fond=inc-pied}></div>
+
+</div>  
+</body>
+</html>
+</BOUCLE_breve_principal>

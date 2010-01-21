@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?
+$refrub='[(#ID_RUBRIQUE)]';
+?>
+<html dir="#LANG_DIR" lang="#LANG">
+
+<head>
+	<title>[(#NOM_SITE_SPIP|textebrut)]</title>
+	[<meta name="description" content="(#DESCRIPTIF_SITE_SPIP|couper{150}|textebrut)" />]
+	<INCLURE{fond=inc-head}>
+</head>
+
+<body>
+
+<div id="conteneur">
+		<INCLURE{fond=inc-commun}>    
+
+    <div id="article">
+
+<B_art>	
+<BOUCLE_art(ARTICLES){lang}{id_article}>
+			<div class="titre-rubrique"><:poster_message:> :</div>
+			[<div class="titre-article">(#TITRE)</div>]
+			[<div class="spip_documents">(#INTRODUCTION|justifier)</div>]
+			<div class="spip_documents">
+				#FORMULAIRE_FORUM
+    	</div>
+</BOUCLE_art>
+</B_art>
+	<B_rub>	
+	<BOUCLE_rub(RUBRIQUES){lang}{id_rubrique}>
+			<div class="titre-rubrique"><:poster_message:> :</div>
+			[<div class="titre-article">(#TITRE)</div>]
+			[<div class="spip_documents">(#INTRODUCTION|justifier)</div>]
+			<div class="spip_documents">
+				#FORMULAIRE_FORUM
+    	</div>
+	</BOUCLE_rub>
+	</B_rub>
+	<BOUCLE_brv(BREVES){lang}{id_breve}>
+			<div class="titre-rubrique"><:poster_message:> :</div>
+			[<div class="titre-article">(#TITRE)</div>]
+			[<div class="spip_documents">(#TEXTE|justifier)</div>]
+			<div class="spip_documents">
+				#FORMULAIRE_FORUM
+    	</div>
+	</BOUCLE_brv>
+	<//B_rub>
+<//B_art>
+		</div>
+		<div id="pied">
+      <!-- insertion pied de page -->
+      <INCLURE{fond=inc-pied}>
+      </div>
+</div>
+</body>
+</html>

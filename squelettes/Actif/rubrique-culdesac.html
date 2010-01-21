@@ -1,0 +1,124 @@
+<BOUCLE_principale(RUBRIQUES){id_rubrique}>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="#LANG_DIR" lang="#LANG">
+
+<head>
+
+<title>[(#TITRE|textebrut) - ][(#NOM_SITE_SPIP|textebrut)]</title>
+	[<meta name="description" content="(#INTRODUCTION|couper{150}|textebrut)" />]
+	<INCLURE{fond=inc-head}>
+
+	[(#REM) Lien vers le flux RSS de la rubrique ]
+	<link rel="alternate" type="application/rss+xml" title="<:syndiquer_rubrique:>" href="[(#URL_PAGE{backend}|parametre_url{id_rubrique,#ID_RUBRIQUE})]" />
+</head>
+  
+<body>
+		
+  <div id="conteneur">
+		<INCLURE{fond=inc-commun}>    
+		
+		<div id="article"> <!-- zone de contenu centrale -->
+    <div class="hierarchie">
+		  <a href="#URL_PAGE{sommaire}" class="souligne">Accueil</a> >
+     <BOUCLE_hierarchie(HIERARCHIE){id_rubrique}>
+	   [<a href="#URL_RUBRIQUE" class="souligne">(#TITRE)</a> >]
+	   </BOUCLE_hierarchie>
+    </div>
+    
+			<div class="titre-rubrique">[(#LOGO_ARTICLE|left||reduire_image{150})][(#TITRE)]</div> <br />                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               	    
+  	  <BOUCLE_rubculdesac(ARTICLES){id_article}>
+        <div class="chapo"> 
+        [(#CHAPO)]
+        </div>            
+			 <div class="spip_documents">[(#TEXTE|image_reduire{400,0})]</div>
+      </BOUCLE_rubculdesac>
+	  	     		 					
+		 	<B_PostForum><!-- Ajout de message possibles ? -->
+  	  <BOUCLE_PostForum(RUBRIQUES){id_rubrique}{titre_mot=cfg.frm.post}>
+      </BOUCLE_PostForum>
+      <?php $Post_Forum = 1; ?>
+      </B_PostForum>
+      <?php $Post_Forum = 0; ?>
+      <//B_PostForum>
+		  <!-- insertion forum article -->
+		  <?php if ($Post_Forum == 1) { ?>
+		     [<div class="forum-repondre"><a href="spip.php?page=forum&(#PARAMETRES_FORUM)&lang=[(#ENV{lang,fr})]" class="bouton_repondre"><:poster_message:></a></div>]     
+ 
+		     [(#PARAMETRES_FORUM|?{'',''}) Cette balise (invisible) provoque le recalcul du forum la premiere fois qu'un message est poste (cf. inc/invalideur). ]
+
+         [(#REM) Nombre total de messages ]
+         <BOUCLE_decompte(FORUMS){id_article}{plat}></BOUCLE_decompte>[<h2 class="forum-decompte">(#TOTAL_BOUCLE|>{0}|?{#TOTAL_BOUCLE,''})
+         [(#TOTAL_BOUCLE|=={1}|?{<:message:>,<:messages_forum:>})]</h2>]<//B_decompte>
+
+         [(#REM) Messages du forum ]
+		  <?php } ?>
+
+		 	<B_DspForum><!-- Afficher le Forum ? -->
+  	  <BOUCLE_DspForum(RUBRIQUES){id_rubrique}{titre_mot=cfg.frm.affiche}>
+      </BOUCLE_DspForum>
+       <B_forums>
+
+       <ul class="forum">
+
+	     <BOUCLE_forums(FORUMS){id_article}{par date}{inverse}>
+         <div class=bloc-forum>
+	        <li class="forum-fil">  
+		         <div class="forum-message">
+			        <div class="forum-chapo">
+				       <h3 class="forum-titre"><a href="#forum#ID_FORUM" name="forum#ID_FORUM" id="forum#ID_FORUM">#TITRE</a></h3>
+				       <small>[(#DATE|affdate)][&nbsp;(#DATE|heures)][:(#DATE|minutes)][, <:par_auteur:> (#NOM|couper{80})]</small>
+			        </div>
+			        <div class="forum-texte">
+				       [(#TEXTE|lignes_longues)]
+				       [<p class="forum-lien"><:voir_en_ligne:> : <a href="(#URL_SITE)" class="spip_out">[(#NOM_SITE|sinon{[(#URL_SITE|couper{80})]})]</a></p>]
+				       <?php if ($Post_Forum == 1) { ?>[<p class="forum-repondre-message"><a href="spip.php?page=forum&(#PARAMETRES_FORUM)&lang=[(#ENV{lang,fr})]" class="bouton_repondre"><:repondre_message:></a></p>]<?php } ?>
+			        </div>
+	           </div>
+
+		        <B_forums_fils>
+		         <ul>
+			         <BOUCLE_forums_fils(FORUMS){id_parent}{par date}> 
+			         <li>
+				        <div class="forum-message">
+					       <div class="forum-chapo">
+						      <strong class="forum-titre"><a href="#forum#ID_FORUM" name="forum#ID_FORUM" id="forum#ID_FORUM">#TITRE</a></strong>
+						      <small>[(#DATE|affdate)][&nbsp;(#DATE|heures)][:(#DATE|minutes)][, <:par_auteur:> (#NOM|couper{80})]</small>
+					       </div>
+					       <div class="forum-texte">
+						      [(#TEXTE|lignes_longues)]
+						      [<p class="forum-lien"><:voir_en_ligne:> : <a href="(#URL_SITE)" class="spip_out">[(#NOM_SITE|sinon{[(#URL_SITE|couper{80})]})]</a></p>]
+						      <?php if ($Post_Forum == 1) { ?>[<p class="forum-repondre-message"><a href="spip.php?page=forum&(#PARAMETRES_FORUM)&lang=[(#ENV{lang,fr})]" class="bouton_repondre"><:repondre_message:></a></p>]<?php } ?>
+					       </div>
+				        </div>
+
+				          <BOUCLE_Forums_Boucle(boucle_forums_fils)></BOUCLE_Forums_Boucle>
+
+			         </li>
+
+			         </BOUCLE_forums_fils>
+		         </ul>
+		       </B_forums_fils>
+
+	        </li>
+	       </div>
+	     </BOUCLE_forums>
+
+       </ul>
+
+       </B_forums>
+      
+      </B_DspForum>
+      <//B_DspForum>
+
+			</div>
+   
+    <div id="pied">
+    	<!-- insertion pied de page -->
+    	<INCLURE{fond=inc-pied}>   	
+    </div>
+   
+</div>
+</body>
+</html>
+</BOUCLE_principale>

@@ -1,0 +1,22 @@
+	<B_infos_context>
+		<BOUCLE_infos_context(ARTICLES){lang}{id_mot}{par titre}>
+		[<h3 class="titre_secteur"><br>(#TITRE)</h3>]
+		[<br><div class="texte_infos">(#TEXTE)</div>]
+		<img src="NAVPICS/pix_violet.gif" width="150" height="1" alt="" border="0">
+		</BOUCLE_infos_context>
+		
+	</B_infos_context>
+	<!--inclusion de la syndication des sites syndiqués-->
+	<BOUCLE_sites(SITES){id_mot}>
+	<B_syndic_sites>
+		<h3 class="titre_secteur"><br><:sur_le_Web:></h3>
+		<ul class="menugauche">
+			<BOUCLE_syndic_sites(SYNDIC_ARTICLES){id_syndic} {par date} {inverse} {0,12}>
+			<li class="lien_texte">
+			<a class="lien_texte" href="#URL_ARTICLE" target=_blank">[(#TITRE*)]</a>
+			</li>
+			</BOUCLE_syndic_sites>
+		</ul>
+		<img src="NAVPICS/pix_violet.gif" width="150" height="1" alt="" border="0">
+	</B_syndic_sites>
+	</BOUCLE_sites>

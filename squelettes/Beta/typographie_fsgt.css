@@ -1,0 +1,435 @@
+/*
+ * Correction des styles HTML par defaut
+ */
+
+.structure {
+	display: none;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	margin-top: 0em;
+	margin-bottom: 0em;
+	font-size: ;
+	font-weight: ;
+	font-family: verdana,Arial, Helvetica, sans-serif,Trebuchet MS, Tahoma;	
+}
+
+/*
+ * Styles generaux
+ */
+.alinea {
+  text-indent: 2em;
+ }
+
+/* liens */
+a {text-decoration: none; color: #003366; }
+a:hover { text-decoration: none; color: rgb(153,0,0); background: none; }
+a:visited { color: none; text-decoration: none; }
+
+a.encadre {
+	color:#000000;	
+	text-decoration: none;
+	}
+
+a:hover.intro { color: rgb(153,0,0);
+				background: none; }
+a:hover.souligne { color: ;
+	text-decoration: underline;
+	background: none; }
+a:hover.blanc { text-decoration: none; color: rgb(255,255,255); background: none; }
+a.black {color: #000000; }	
+
+/* MENU SUP liens pas utilisé*/
+.menu_sup { 
+  padding: ;
+  font-size: 70%;
+	font-weight: bold;
+  height: 20px;
+  border-left: 1px #ffffff solid;
+  color: #ffffff;
+}
+a.menu_sup:hover {
+  height: 20px; 
+  text-decoration: none; 
+  color: #FFA800; 
+  background: #ffffff; 
+  }
+/* MENU SUPERIEUR liens */
+
+ul#menu_sup {
+margin:0 ;
+padding:0;
+list-style-type:none;
+}
+#menu_sup li {
+display: inline;
+margin: 0;
+padding: 0;
+}
+#menu_sup a {
+margin: 0;
+padding: 0 5px;
+font-size: 0.71em;
+font-weight: normal;
+text-align: center;
+color: white;
+width:auto;
+height: 100%;
+border-right: white solid 1px;
+}
+#menu_sup a:hover { 
+text-decoration: none; 
+color: #003366; 
+background: rgb(255,255,255);
+}
+
+/* MENU LATERAL liens */
+ul#menu_lat {
+margin:0;
+padding:0;
+list-style-type:none;
+
+}
+#menu_lat a {
+display: block;
+margin:  0;
+padding: 3px 2px;
+font-size: 0.75em;
+font-weight: bold;
+line-height: 13px;
+width:146px;
+height:auto;
+border-bottom: ;
+text-align: left;
+
+/*  rgb(105,139,190)  */
+}
+#menu_lat a:hover { 
+text-decoration: none; 
+color: rgb(255,255,255); 
+background: #003366; 
+}
+
+/* MENU CADRES des liens à droite*/
+ul#menu_liens_rub {
+margin:0;
+padding:0;
+list-style-type:none;
+border-bottom: 1px rgb(150,150,150) solid;
+width:145px; 
+}
+#menu_liens_rub a {
+display: block;
+margin:  0;
+padding: 3px 2px;
+color: rgb(150,150,150);
+font-size: 0.65em;
+font-weight: bold;
+line-height: 13px;
+height:auto;
+text-align: left;
+}
+#menu_liens_rub a:hover { 
+text-decoration: none; 
+color: ; 
+background: rgb(250,250,250); 
+}
+
+/****************************/
+
+ul#menu_liens_art {
+margin:0;
+padding:0;
+list-style-type:none;
+border-bottom: 1px rgb(134,134,134) solid;
+}
+#menu_liens_art a {
+display: block;
+margin:  0;
+padding: 3px 2px;
+color: rgb(150,150,150);
+font-size: 0.65em;
+font-weight: normal;
+line-height: 13px;
+height:auto;
+text-align: left;
+}
+#menu_liens_art a:hover { 
+text-decoration: none; 
+color: ; 
+background: rgb(250,250,250); 
+}
+
+/* liste à puce */
+ul.list {
+margin:0;
+padding:0;
+/*list-style-image: url(../IMG/logos/car_rg.gif);*/
+list-style-position: inside;
+list-style-type: square;
+color: red;
+line-height: 15px; 
+}
+
+/* styles pour le contenu */	
+
+.sous_rubrique {
+	font-size: 100%;
+	font-weight: bold;
+	font-family: verdana,Arial, Helvetica, sans-serif,Trebuchet MS, Tahoma;	
+}
+.descriptif_rubrique {
+	font-size: 75%;
+	font-weight: bold;
+	font-family: verdana,Bitstream Vera Sans, Comic Sans MS, Sylfaen, Tahoma;	
+}
+.chapo {
+	font-family:  verdana,Helvetica,Arial,sans-serif,Trebuchet MS, Tahoma;
+	font-weight: bold;
+	text-align: justify;
+	font-size: 80%;
+}
+.texte1 {
+	font-family: Trebuchet MS,verdana,Helvetica,Arial, sans-serif, Tahoma;
+	text-align: justify;
+	font-size: 80%;
+	color: black; 
+}
+.texte_petit {
+	font-family: Trebuchet MS, verdana,Helvetica,Arial,sans-serif, Tahoma;
+	text-align:;
+	font-size: 75%;
+	color: black;
+}
+.texte_edito {
+	font-family: Trebuchet MS, verdana,Helvetica,Arial,sans-serif, Tahoma;
+	text-align:;
+	font-size: 70%;
+	color: rgb(153,0,0); 
+}
+.pagination {
+	font-family: Trebuchet MS, verdana,Helvetica,Arial,sans-serif, Tahoma;
+	text-align:center;
+	font: 75% bold;
+	color: black; 
+}
+}
+.ps {
+	font-family: verdana,Arial, Helvetica, sans-serif;
+	text-align: justify;
+	font-size: 75%;
+	color: #777777;
+	border-top: 1px dashed ;
+	border-color: #777777; 
+}
+.notes {
+	font-family: verdana,Helvetica,Arial,sans-serif;
+	color: #777777;
+	text-align: justify;
+	font-size: 70%;
+	border-top: 1px solid ;
+	
+}
+.date {
+	font-family: verdana,Arial,sans-serif;
+	font-style: normal;
+	font-size: 0.6em;
+	font-weight: normal;
+	color: black;
+}
+.dateVideo {
+	font-family: verdana,Arial,sans-serif;
+	font-style: normal;
+	font-size: 0.6em;
+	font-weight: normal;
+	color: rgb(153,0,0);
+}
+.descriptif-album {
+	font-family: verdana,Arial, Helvetica, sans-serif,Trebuchet MS, Tahoma;
+	text-align: ;
+	font-size: 70%;
+}
+.contenu h1,h2 {
+	font-size: 120%;
+	font-weight: bold;
+}
+.contenu h1,h2.titre-extrait {
+	font-size: 160%;
+	font-weight: bold;
+}
+.contenu h1,h2.titre-texte {
+	font-size: 190%;
+	font-weight: bold;
+}
+.contenu .surtitre {
+	font-size: 110%;
+	font-weight: bold;
+	font-variant: small-caps;
+}
+.contenu .detail {
+	font-size: 80%;
+	color: #303030;
+}
+.extrait {
+	border: groove 2px #a0a0a0;
+	padding: 1em;
+	font-size: 85%;
+}
+.hierarchie {
+  font-size: 60%;
+}
+
+.centrer {
+  text-align: center; 
+}
+
+.menu_liens {
+  font-size: 70%;
+	font-weight: bold;
+    
+ }
+ 
+.pied_page {
+  text-align: center;
+  font-size: 100%;
+}
+
+/* Ici les styles pour les titres */
+h1 {	
+	font-weight: bold;
+	font-size: 120%;
+	margin-top : 25px;
+	margin-bottom : 25px;
+	padding: 0em;
+}
+h2 {	
+	font-weight: bold;
+	font-size: 110%;
+	margin-top : 25px;
+	margin-bottom : 25px;
+	padding: 0em;
+}
+h3 {	
+	font-weight: bold;
+	font-size: 100%;
+	margin-top : 25px;
+	margin-bottom : 25px;
+	padding: 0em;
+}
+h4 {	
+	font-weight: bold;
+	font-size: 90%;
+	margin-top : 25px;
+	margin-bottom : 25px;
+	padding: 0em;
+}
+h5 {	
+	font-weight: bold;
+	font-size: 80%;
+	margin-top : 25px;
+	margin-bottom : 25px;
+	padding: 0em;
+}
+h6 {	
+  font-size: 70%;
+	font-weight: bold;
+	margin-top : 25px;
+	margin-bottom : 25px;
+	padding: 0em;
+}
+
+.titre-rubrique {
+	font-size: 95%;
+	font-weight: bold; 
+	font-family: verdana, Helvetica,Arial,sans-serif,Trebuchet MS, Tahoma;
+	color: #DF170D;
+	text-align: center;
+} 
+
+.surtitre {
+	font-size: 90%;
+	font-weight: bold;
+	text-align: left; 
+	font-family: Helvetica,Arial,sans-serif,Trebuchet MS, Tahoma;
+	color: #333333;
+	padding-bottom: 0px;
+	padding-top: 10px;
+	border: ;
+}
+.titre-article {
+	font-size: 80%;
+	font-weight: bold;
+	text-align: left; 
+	font-family: verdana,Arial,Helvetica, sans-serif,Trebuchet MS, Tahoma;
+	color: #000000;
+}
+.titre-article2 {
+	font-size: 90%;
+	font-weight: bold;
+	text-align: center; 
+	font-family: verdana,Arial,Helvetica, sans-serif,Trebuchet MS, Tahoma;
+	color: #990000;
+} 
+.sous-titre {
+	font-size: 90%;
+	font-weight: bold;
+	text-align: left; 
+	font-family: verdana,Helvetica,Arial, sans-serif,Trebuchet MS, Tahoma;
+	color: black;
+	padding-bottom: 5px;
+}
+.petit-titre-sommaire {
+	font-size: 70%;
+	font-weight: bold;
+	text-align: left; 
+	font-family: verdana,Arial, Helvetica, sans-serif,Trebuchet MS, Tahoma;
+	color: #000000;
+}
+.petit-titre-decal {
+	font-size: 80%;
+	font-weight: bold;
+	text-align: left;
+  text-indent: 2em; 
+	font-family: verdana,Arial, Helvetica, sans-serif,Trebuchet MS, Tahoma;
+	color: #808080;
+}
+.titreEncadre {
+	font-size: 70%;
+	font-weight: bold;
+	text-align: center; 
+	font-family: verdana,Arial, Helvetica, sans-serif,Trebuchet MS, Tahoma;
+	color: #DF170D;
+}
+.titreLiens {
+	font-size: 70%;
+	font-weight: normal;
+	text-align: center; 
+	font-family: verdana,Arial, Helvetica, sans-serif,Trebuchet MS, Tahoma;
+	color: #333366;
+}
+.titreEncadre2 {
+	font-size: 70%;
+	font-weight: normal;
+	text-align: left; 
+	font-family: verdana,Helvetica, Arial, sans-serif,Trebuchet MS, Tahoma;
+	color: ;
+	padding-bottom: 5px;
+        line-height: 1.2em;
+}
+.petitTitreRub {
+	font-family: verdana,Trebuchet MS,Helvetica,Arial,sans-serif, Tahoma;
+	text-align:;
+	font-size: ;
+	font-style: normal;
+	color: rgb(153,0,0);
+}	
+.titre-photos {
+	font-size: 0.6em;
+	color: black;
+	text-align: center;
+	font-weight: bold;
+	font-family: verdana,Helvetica,Arial, sans-serif,Trebuchet MS, Tahoma;
+	padding: 0;
+	margin: 0;
+
+}

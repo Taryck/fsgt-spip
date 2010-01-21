@@ -1,0 +1,11 @@
+<B_rub_enbref><!-- zone breves attachees a la rubrique  -->
+	<div class="spip_cadre_liens" >
+	<span class="titreEncadre">En bref</span><div class="trait_haut"></div>
+	<BOUCLE_rub_enbref(BREVES){id_rubrique}{doublons alu_brv}{par date}{inverse}{0,#CONFIG{FSGT/rub_enbref_count,0}}>
+		<ul id="menu_liens_art"><li>
+			[<a href="#URL_BREVE">(#TITRE)</a>]
+			[<span class="date"> - (#DATE|affdate)</span>]
+		</li></ul>
+	</BOUCLE_rub_enbref>
+	</div>
+</B_rub_enbref>

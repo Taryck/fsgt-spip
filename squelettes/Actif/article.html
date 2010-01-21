@@ -1,0 +1,36 @@
+[(#REM)
+	cette page n'affichera rien elle même, mais nous sert à tester la présence ou non 
+  des mots-clés et d'afficher le squelette correspondant
+]
+<BOUCLE_principale(ARTICLES) {id_article}>
+
+[(#REM)
+	si le mot-clé "diaporama" est attaché à la rubrique de l'article en cours, 
+	on appelle le squelette "diaporama.html"
+]
+<BOUCLE_diaporama(MOTS){id_rubrique}{titre = diaporama}><INCLURE{fond=diaporama}{id_article}></BOUCLE_diaporama>
+
+[(#REM)
+	si le mot-clé "diaporama" n'est pas attaché à la rubrique de l'article, 
+	MAIS que le mot-clé "album" est attaché à l'article en cours, 
+	on appelle le squelette "album.html"
+]
+<BOUCLE_album(MOTS){id_article}{titre = album-photos}><INCLURE{fond=album}{id_article}></BOUCLE_album>
+
+[(#REM)
+	Idem mot-clé "contacts" 
+	on appelle le squelette "contacts.html"
+]
+<BOUCLE_contacts(MOTS){id_article}{titre = contacts}><INCLURE{fond=contacts}{id_article}></BOUCLE_contacts>
+
+[(#REM)
+	Sinon on appelle le squelette "article-normal.html"
+]
+<INCLURE{fond=article-normal}{id_article}>
+
+<//B_contacts>
+<//B_album>
+<//B_diaporama>
+</BOUCLE_principale>
+<INCLURE{fond=404}>
+<//B_principale>

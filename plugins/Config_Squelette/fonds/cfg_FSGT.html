@@ -1,0 +1,136 @@
+#CACHE{0}
+
+<!-- descriptif=
+<h4>Config du modèle FSGT</h4>
+Configuration des paramètres du modèle FSGT ([Documentation->http://spip.aide.fsgt.org/]).<br />
+Ici vous pouvez configurer l'article qui sera affich&eacute; en page sommaire.<br />
+<br />
+-->
+<!-- titre=Config Modèle -->
+
+<form method="post">[(#ENV{_cfg_}|form_hidden)]
+
+<fieldset><legend><b>Site "#NOM_SITE_SPIP"</b> :&nbsp;</legend>
+	<fieldset><legend>Plan du site :</legend>
+	  <label>Actif</label>&nbsp;<input type="checkbox" name="plan_on" [checked="(#ENV{plan_on})"] />&nbsp;&nbsp;
+  	<label>Afficher aussi les articles</label>&nbsp;<input type="checkbox" name="plan_art" [checked="(#ENV{plan_art})"] />&nbsp;&nbsp;
+  	<label>Afficher aussi les brèves</label>&nbsp;<input type="checkbox" name="plan_brv" [checked="(#ENV{plan_brv})"] />&nbsp;&nbsp;
+  	<br />
+		<label>Nb Rub. par page</label>&nbsp;<input type="text" name="plan_rub_page" maxlength="2" size="2" value="#ENV{plan_rub_page, 10}">&nbsp;( <b>&gt;0 sinon erreur sur la page</b> )<br />
+	</fieldset>
+	<fieldset><legend>Menu latéral :</legend>
+	   <label>Nombre d'articles</label>&nbsp;<input type="text" name="menu_lat_art_count" maxlength="2" size="2" value="#ENV{menu_lat_art_count, 5}">&nbsp;( 0 = aucun )<br />
+	</fieldset>
+	<fieldset><legend>Pied de Page :</legend>
+	   <label>Flux RSS</label><input type="checkbox" name="pied_RSS" [checked="(#ENV{pied_RSS})"] />&nbsp;&nbsp; 
+	   <br />
+   <label>Article report d'anomalie &agrave; utiliser :</label>
+   <select name="pied_anomalie">
+     <option value="">Racine</option>
+  	 <BOUCLE_sect_ano(RUBRIQUES) {racine} {par titre}>
+  	    <option value="" style="font-weight: bold;"><strong>rubrique : #TITRE</strong></option>
+  			<BOUCLE_art_ano_racine(ARTICLES) {id_rubrique} {par titre}>
+  	        <option value="#ID_ARTICLE" [(#CONFIG{FSGT/pied_anomalie}|=={#ID_ARTICLE}|?{selected="selected",''})]>&nbsp;&nbsp;#ID_ARTICLE . #TITRE</option>
+  			</BOUCLE_art_ano_racine>
+  			<BOUCLE_rub_ano(RUBRIQUES) {id_parent} {par titre}>
+  			   <option value="" style="font-weight: bold;">&nbsp;&nbsp;rubrique #ID_RUBRIQUE : #TITRE</option>
+  				 <BOUCLE_art_ano(ARTICLES) {id_rubrique} {par titre}>
+  				    <option value="#ID_ARTICLE" [(#CONFIG{FSGT/pied_anomalie}|=={#ID_ARTICLE}|?{selected="selected",''})]>&nbsp;&nbsp;&nbsp;&nbsp;#ID_ARTICLE . #TITRE</option>
+  				 </BOUCLE_art_ano>
+  				 <BOUCLE_sous_rub_ano(BOUCLE_rub_ano)></BOUCLE_sous_rub_ano>
+  			</BOUCLE_rub_ano>
+  	 </BOUCLE_sect_ano>
+   </select>
+	</fieldset>
+
+</fieldset>
+
+<br /><hr class="spip" /><br />
+
+<fieldset><legend>Page <b>"<:accueil_site:>"</b></legend>
+	<fieldset><legend><:Articles:> :&nbsp;</legend>
+   <label>Choix de l'article &agrave; utiliser :</label>
+   <select name="acc_alaune_id">
+     <option value="">Racine</option>
+  	 <BOUCLE_secteurs(RUBRIQUES) {racine} {par titre}>
+  	    <option value="" style="font-weight: bold;"><strong>rubrique : #TITRE</strong></option>
+  			<BOUCLE_articles_racine(ARTICLES) {id_rubrique} {par titre}>
+  	        <option value="#ID_ARTICLE" [(#CONFIG{FSGT/acc_alaune_id}|=={#ID_ARTICLE}|?{selected="selected",''})]>&nbsp;&nbsp;#ID_ARTICLE . #TITRE</option>
+  			</BOUCLE_articles_racine>
+  			<BOUCLE_rubriques(RUBRIQUES) {id_parent} {par titre}>
+  			   <option value="" style="font-weight: bold;">&nbsp;&nbsp;rubrique #ID_RUBRIQUE : #TITRE</option>
+  				 <BOUCLE_articles(ARTICLES) {id_rubrique} {par titre}>
+  				    <option value="#ID_ARTICLE" [(#CONFIG{FSGT/acc_alaune_id}|=={#ID_ARTICLE}|?{selected="selected",''})]>&nbsp;&nbsp;&nbsp;&nbsp;#ID_ARTICLE . #TITRE</option>
+  				 </BOUCLE_articles>
+  				 <BOUCLE_sous_rubriques(BOUCLE_rubriques)></BOUCLE_sous_rubriques>
+  			</BOUCLE_rubriques>
+  	 </BOUCLE_secteurs>
+   </select>
+		<fieldset>
+		<legend>Eléments à utiliser :</legend>
+		   <label>Logo</label><input type="checkbox" name="acc_alaune_logo" [checked="(#ENV{acc_alaune_logo})"] />&nbsp;&nbsp; 
+		   <label>Sur-Titre</label><input type="checkbox" name="acc_alaune_surtitre" [checked="(#ENV{acc_alaune_surtitre})"] />&nbsp;&nbsp; 
+		   <label>Titre</label><input type="checkbox" name="acc_alaune_titre" [checked="(#ENV{acc_alaune_titre})"] />&nbsp;&nbsp; 
+		   <label>Sous-titre</label><input type="checkbox" name="acc_alaune_soustitre" [checked="(#ENV{acc_alaune_soustitre})"] />&nbsp;&nbsp; 
+		   <label>Chapeau</label><input type="checkbox" name="acc_alaune_chapo" [checked="(#ENV{acc_alaune_chapo})"] />&nbsp;&nbsp; 
+		   <label>Texte</label><input type="checkbox" name="acc_alaune_texte" [checked="(#ENV{acc_alaune_texte})"] />
+		</fieldset>
+	</fieldset>
+
+	<br /><br />
+
+	<fieldset><legend>Zone Evénements</legend>
+<!--		<fieldset><legend><:Breves:> :&nbsp;</legend>
+ 		<label>Actives</label><input type="checkbox" name="acc_event_brv_on" [checked="(#ENV{acc_event_brv_on})"] />&nbsp;&nbsp;  -->
+		<label>Nombres de brèves affichées</label>&nbsp;<input type="text" name="acc_event_brv_count" maxlength="2" size="2" value="#ENV{acc_event_brv_count, 10}">&nbsp;( 0 = aucune )<br />
+<!--		</fieldset>
+		<fieldset><legend><:Articles:> :&nbsp;</legend> -->
+<!--		<label>Actifs</label><input type="checkbox" name="acc_event_art_on" [checked="(#ENV{acc_event_art_on})"] />&nbsp;&nbsp;   -->
+		<label>Nombres d'articles affichés</label>&nbsp;<input type="text" name="acc_event_art_count" maxlength="2" size="2" value="#ENV{acc_event_art_count, 0}">&nbsp;( 0 = aucun )<br />
+<!--		</fieldset> -->
+	</fieldset>
+
+	<br /><br />
+
+	<fieldset><legend>Zone Zoom</legend>
+<!--				<fieldset><legend><:Breves:> :&nbsp;</legend>
+		<label>Actives</label><input type="checkbox" name="acc_zoom_brv_on" [checked="(#ENV{acc_zoom_brv_on})"] />&nbsp;&nbsp;   -->
+		<label>Nombres de brèves affichées</label>&nbsp;<input type="text" name="acc_zoom_brv_count" maxlength="2" size="2" value="#ENV{acc_zoom_brv_count, 0}">&nbsp;( 0 = aucune )<br />
+<!--		</fieldset>																																																
+		<fieldset><legend><:Articles:> :&nbsp;</legend>
+		<label>Actifs</label><input type="checkbox" name="acc_zoom_art_on" [checked="(#ENV{acc_zoom_art_on})"] />&nbsp;&nbsp;   -->
+		<label>Nombres d'articles affichés</label>&nbsp;<input type="text" name="acc_zoom_art_count" maxlength="2" size="2" value="#ENV{acc_zoom_art_count, 10}">&nbsp;( 0 = aucun )<br />
+		</fieldset>
+	
+
+	<br /><br />
+
+	<fieldset><legend>Colonnes à droite</legend>
+		<fieldset><legend>Articles populaires</legend>
+			<label>Popularité Minimum pour apparaitre</label><input type="text" name="acc_pop_mini" maxlength="2" size="2" value="#ENV{acc_pop_mini, 50}"> % &nbsp;&nbsp; (0 à 99%)<br />
+			<label>Nombres d'articles affichés</label>&nbsp;<input type="text" name="acc_pop_count" maxlength="2" size="2" value="#ENV{acc_pop_count, 10}">&nbsp;( 0 = aucun )<br />
+		</fieldset>
+		<label>Dernières publications</label>&nbsp;<input type="text" name="acc_last_doc" maxlength="2" size="2" value="#ENV{acc_last_doc, 5}">&nbsp;( 0 = aucun )<br />
+	</fieldset>
+
+</fieldset>
+
+<br /><hr class="spip" /><br />
+
+<fieldset><legend>Page <b>"<:rubriques:>"</b> :&nbsp;</legend>
+	<label>Largeur image rubrique (pixel)</label>&nbsp;<input type="text" name="rub_img_width" maxlength="3" size="3" value="#ENV{rub_img_width,400}">&nbsp;( défaut = 400 )<br />
+	<label>Largeur image articles dans "à la une" (pixel)</label>&nbsp;<input type="text" name="rub_art_img_width" maxlength="3" size="3" value="#ENV{rub_art_img_width,150}">&nbsp;( défaut = 150 )<br />
+  <label>Nb de brèves "à la une"</label>&nbsp;<input type="text" name="rub_alaune_brv_count" maxlength="2" size="2" value="#ENV{rub_alaune_brv_count, 10}">&nbsp;( 0 = aucune )<br />
+  <label>Nb d'articles "à la une"</label>&nbsp;<input type="text" name="rub_alaune_art_count" maxlength="2" size="2" value="#ENV{rub_alaune_art_count, 10}">&nbsp;( 0 = aucun )<br />
+	<label>Nb Art. par page dans la liste</label>&nbsp;<input type="text" name="rub_art_page" maxlength="2" size="2" value="#ENV{rub_art_page, 20}">&nbsp;( <b>&gt;0 sinon erreur sur la page</b> )<br />
+		<fieldset><legend>Articles populaires</legend>
+			<label>Popularité Minimum pour apparaitre</label><input type="text" name="rub_pop_mini" maxlength="2" size="2" value="#ENV{rub_pop_mini, 20}"> % &nbsp;&nbsp; (0 à 99%)<br />
+			<label>Nombres d'articles affichés</label>&nbsp;<input type="text" name="rub_pop_count" maxlength="2" size="2" value="#ENV{rub_pop_count, 5}">&nbsp;( 0 = aucun )<br />
+		</fieldset>
+	<label>Nb de brèves dans "en bref"</label>&nbsp;<input type="text" name="rub_enbref_count" maxlength="2" size="2" value="#ENV{rub_enbref_count, 10}">&nbsp;( 0 = aucune )<br />
+</fieldset>
+
+<input type="submit" name="_cfg_ok" value="<:OK:>" />
+<input type="reset" value="<:Reset:>" />
+<input type="submit" name="_cfg_delete" value="<:Supprimer:>" />
+</form>

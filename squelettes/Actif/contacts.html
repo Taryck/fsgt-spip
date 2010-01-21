@@ -1,0 +1,78 @@
+<BOUCLE_principale(ARTICLES){id_article}>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="#LANG_DIR" lang="#LANG">
+
+<head>
+
+<!-- titre de la page -->
+<title>#NOM_SITE_SPIP &gt; [(#TITRE)]</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=#CHARSET" />
+<!-- description, mots-clés, auteurs de l'article -->
+<META NAME="Description" CONTENT='[(#DESCRIPTIF|supprimer_tags|texte_script)]' />
+<meta name="Keywords" content="<BOUCLE_keywords(MOTS){id_article}{", "}>#TITRE</BOUCLE_keywords>" />
+<meta name="Author" content="<BOUCLE_author(AUTEURS){id_article}{", "}>#NOM</BOUCLE_author>" />
+
+<!-- Ceci est la feuille de style par defaut pour les types internes a SPIP -->
+<link rel="stylesheet" href="spip_style_hvlv.css" type="text/css" />
+<!-- Feuille de style typographie -->
+<link rel="stylesheet" href="typographie_hvlv.css" type="text/css" />
+<!-- Lien vers le backend pour navigateurs eclaires -->
+<link rel="alternate" type="application/rss+xml" title="<:syndiquer_site:>" href="backend.php3" />
+
+</head>
+
+<body>
+
+  <div id="conteneur">
+  
+    <div id="head1"><!-- insertion bandeau haut de page --></div>
+       
+    <div id="head2"><!-- zone bandeau --></div>
+  
+    <div id="menu"><!-- zone de menu -->
+ 		<!-- insertion menu gauche (rubriques + formulaire de recherche) --> 
+      <INCLURE(menu.php3)>
+    </div>
+   
+    <div id="article"><!-- insertion zone contenu de l'article -->
+      	 
+          	      
+  		  [<div class="surtitre">(#SURTITRE|MAJUSCULES)</div>]
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+  			[<div align="center" class="titre-article">(#TITRE)</div>] 
+  		                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+  			[<div class="sous-titre"><b>(#SOUSTITRE)</b></div>]<br /><br />	 
+		                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+	     [(#LOGO_ARTICLE)]
+		    
+      <div class="chapo"> 
+        [(#CHAPO)<P />]
+      </div>            
+			<div class="spip_documents">[(#TEXTE|justifier)]</div>
+			<P />
+			[<img src="IMG/logos/fil_point_130.gif" /><div class="ps"><b> PS: </b>(#PS)</div>]
+			
+			<div class="notes">[<hr />(#NOTES)<hr />]</div><p />
+			
+			<B_document>
+			<BOUCLE_document(DOCUMENTS){id_article}{par titre}{mode=document}>      
+			<P /><div align="center">
+			 [<hr />(#LOGO_DOCUMENT|#URL_DOCUMENT)<br />]
+			 <a href="#URL_DOCUMENT" class="spip_in"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">[(#TITRE)]</font></a>
+			 </div>
+			 </BOUCLE_document>
+		  </B_document>
+			 </BOUCLE_principale>		   
+	 	    
+		</div>
+		
+      <div id="pied">
+      <!-- insertion pied de page -->
+      <INCLURE(pied.php3)>
+      </div>
+
+  </div>  
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<B_principale>
+<BOUCLE_principale(AUTEURS) {id_auteur}>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="#LANG_DIR" lang="#LANG">
+
+<head>
+  <title>[(#TITRE|textebrut) - ][(#NOM_SITE_SPIP|textebrut)]</title>
+	[<meta name="description" content="(#INTRODUCTION|couper{150}|textebrut)" />]
+	<INCLURE{fond=inc-head}>
+</head>
+
+<body>
+
+<div id="conteneur">
+	<INCLURE{fond=inc-commun}>    
+	<div id="article"><!-- insertion zone contenu de l'article -->
+		[(#REM) Fil d'Ariane ]
+		<div class="hierarchie"><a href="#URL_SITE_SPIP/"><:accueil_site:></a> &gt; <:info_auteurs:>[ &gt; (#NOM|couper{80})]</div>
+		
+   [(#REM) margin:hautpx droitepx baspx gauchepx;]
+		<div class="cartouche" style="float:right; margin:0px 0px -10px 10px;">
+			[(#LOGO_AUTEUR||image_reduire{200,200})]
+			<h1 class="titre">#NOM</h1>
+		</div>
+			
+		[<p class="spip_documents"><:voir_en_ligne:> : <a href="(#URL_SITE)" class="spip_out">[(#NOM_SITE|sinon{[(#URL_SITE|couper{80})]})]</a></p>]
+		[<div class="spip_documents">(#BIO)</div><br />]
+
+		[<div class="encart">(#FORMULAIRE_ECRIRE_AUTEUR)</div>]
+
+		[(#REM) Articles de l'auteur ]
+		<B_articles>
+			<div class="trait_haut"></div>
+				<ul class="list">
+					<BOUCLE_articles(ARTICLES){id_auteur}{par date}{inverse}{pagination #CONFIG{FSGT/rub_art_page,20}}>   			  
+						<li>[<a href="#URL_ARTICLE" class="petit-titre-sommaire">(#TITRE)</a>][<span class="date"> | (#DATE|affdate)</span>]</li>
+          </BOUCLE_articles> 		    
+				</ul>
+				<br />
+				<div class="pagination">[(#PAGINATION{page})]</div>
+				<br />
+		</B_articles>
+
+		[<div class="notes"><h2><:info_notes:></h2>(#NOTES)</div>]
+
+	</div>
+	<div id="pied"><INCLURE{fond=inc-pied}></div>
+
+</div>  
+
+</body>
+</html>
+</BOUCLE_principale>
+</B_principale>
+<INCLURE{fond=404}>
+<//B_principale>

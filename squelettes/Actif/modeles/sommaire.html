@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="#LANG_DIR" lang="#LANG">
+
+<head>
+<title>[(#NOM_SITE_SPIP|textebrut)]</title>
+	[<meta name="description" content="(#DESCRIPTIF_SITE_SPIP|couper{150}|textebrut)" />]
+	<INCLURE{fond=inc-head}>
+</head>
+
+<body>
+  <div id="conteneur">
+	  <div id="head1">[(#INCLURE{fond=bandeau-sup})]<!-- zone bandeau haut de page avec photos--></div>
+	
+  	<div id="head2"><!-- zone bandeau -->   
+    <INCLURE{fond=menu_sup}>
+    </div>
+    
+    <div id="menu"> <!-- zone de menu -->
+	     	  	
+ 		<!-- insertion menu gauche (rubriques + formulaire de recherche + edito + une SPA) --> 
+      <INCLURE{fond=menu}>
+    
+  </div>
+	
+  <div id="nouveaute"><!-- zone centrale -->
+    
+		 <div class="spip_encadrer_vide"><!-- à la une --> 
+	   <BOUCLE_ALU_Art(ARTICLES){titre_mot=cfg.ctr.alaune}{par date}{inverse}{0,1}{doublons 1}>
+	    <p class="bloc " ><span class="cartouche">[(#LOGO_ARTICLE|right||reduire_image{150,0})]</span>
+		 	 <div class="titre-article">[(#TITRE|supprimer_numero)]</div>
+		 	 <div class="spip_documents" >[(#TEXTE|justifier)]</div>
+       <div class="trait_haut"><span class="date" style='float:right;'>[(#DATE|affdate)]</span></div>
+      </p>       
+		 </BOUCLE_ALU_Art>		
+		 </div>
+		 <div class="spip_encadrer_vide couleur_fond" ><!-- évènements --> 
+	  	<span class="titreEncadre">Evènements</span>
+	   <BOUCLE_Event_Brv(BREVES){titre_mot=cfg.ctr.event}{par date}{inverse}{0,10}{doublons 1}>
+       <BR><span class="date">[(#DATE|affdate)] | <BOUCLE_REB(RUBRIQUES){id_rubrique=#ID_RUBRIQUE}><a href="#URL_RUBRIQUE" class="petitTitreRub">[(#TITRE|supprimer_numero)]</a></BOUCLE_REB>
+        | </span><a href="#URL_BREVE" class="titre-article" title="[(#INTRODUCTION|supprimer_tags|couper{150})]">[(#TITRE|supprimer_numero)]</a>
+		 </BOUCLE_Event_Brv>
+	   <BOUCLE_Event_Art(ARTICLES){titre_mot=cfg.ctr.event}{par date}{inverse}{0,3}{doublons 1}>
+	    <p class="bloc ">
+       <div class="trait_haut"></div>
+		 	 <div class="cartouche">[(#LOGO_ARTICLE|right||reduire_image{150,0})] </div>  
+       <span class="date">[(#DATE|affdate)] | <BOUCLE_REA(RUBRIQUES){id_rubrique=#ID_SECTEUR}><a href="#URL_RUBRIQUE" class="petitTitreRub">[(#TITRE|supprimer_numero)]</a></BOUCLE_REA></span>
+		 	 <br /><a href="#URL_ARTICLE" class="titre-article">[(#TITRE|supprimer_numero)]</a>		 	 
+	  	 <div class="spip_documents">[(#INTRODUCTION|justifier)]</div>
+      </p>       
+		 </BOUCLE_Event_Art>		
+		 </div><br />
+		 
+		 
+		 
+	<div class="spip_encadrer_vide" ><!-- Zoom sur un secteur --> 
+	<span class="titreEncadre">Zoom</span>
+	<div class="trait_haut"></div>
+	<ul class="list">
+	<BOUCLE_zoom_Brv(BREVES){titre_mot=cfg.ctr.zoom}{par date}{inverse}{0,10}{doublons 1}>
+	<li> <span class="date">[(#DATE|affdate)] | <BOUCLE_RZB(RUBRIQUES){id_rubrique=#ID_RUBRIQUE}><a href="#URL_RUBRIQUE" class="petitTitreRub">[(#TITRE|supprimer_numero)]</a></BOUCLE_RZB></span>
+	<br /><a href="#URL_BREVE" class="petit-titre-sommaire">[(#TITRE|supprimer_numero)]</a>
+	<div class="texte1">[(#INTRODUCTION|justifier)]</div>
+	</li>       
+	</BOUCLE_zoom_Brv>
+<B_zoom_Art>
+	<BOUCLE_zoom_Art(ARTICLES){titre_mot=cfg.ctr.zoom}{par date}{inverse}{0,3}{doublons 1}>
+	<li>       
+	<span class="date">[(#DATE|affdate)] | <BOUCLE_RZA(RUBRIQUES){id_rubrique=#ID_SECTEUR}><a href="#URL_RUBRIQUE" class="petitTitreRub">[(#TITRE|supprimer_numero)]</a></BOUCLE_RZA></span>
+	<br /><a href="#URL_ARTICLE" class="petit-titre-sommaire">[(#TITRE|supprimer_numero)]</a>
+	<div class="cartouche">[(#LOGO_ARTICLE|right||reduire_image{150,0})]</div>
+	<div class="texte1">[(#INTRODUCTION|justifier)]</div>
+	</li>       
+	</BOUCLE_zoom_Art>
+</B_zoom_Art>
+	</div>
+		 
+</div>
+  	 
+<div id="actualite">
+	
+	   <!-- tribune fsgt -->
+ 	  <B_actu>
+     <div class="spip_encadrer_vide" >
+        <span class="titreEncadre">La tribune FSGT</span>
+        <div class="trait_haut"></div>
+        <ul class="list">
+        <BOUCLE_actu(ARTICLES){titre_mot=tribune}{par date}{inverse}{0,2}{doublons 2}>         
+		 	    <li>
+		 	    <span class="date">[(#DATE|affdate)] | <BOUCLE_rub2(RUBRIQUES){id_rubrique=#ID_SECTEUR}><a href="#URL_RUBRIQUE" class="petitTitreRub">[(#TITRE|supprimer_numero)]</a></BOUCLE_rub2></span>
+		 	    <br />[<a href="#URL_ARTICLE" class="petit-titre-sommaire">(#TITRE|supprimer_numero)</a>]
+	  	    
+          [<div class="texte_petit">(#INTRODUCTION|justifier)</div>]
+          </li>
+		     </BOUCLE_actu>
+      </div>
+   	  </B_actu>
+
+      <div class="spip_encadrer_vide" >
+        <!-- dernières mises en ligne -->
+        <div class="titreEncadre filet">Dernières mises en ligne</div>
+        
+        <ul class="list">
+        <BOUCLE_derMaj(ARTICLES){par date}{inverse}{0,3}{doublons 1}{doublons 2}{doublons 3}>         
+		 	    <li>
+		 	    <span class="date">[(#DATE|affdate)] | <BOUCLE_rub4(RUBRIQUES){id_rubrique=#ID_SECTEUR}><a href="#URL_RUBRIQUE" class="petitTitreRub">[(#TITRE|supprimer_numero)]</a></BOUCLE_rub4></span>
+		 	    <br />[<a href="#URL_ARTICLE" class="petit-titre-sommaire">(#TITRE|supprimer_numero)</a>]
+          </li>
+		     </BOUCLE_derMaj>
+      </div>
+    	 
+	</div>
+           
+	<div id="pied">
+    	<!-- insertion pied de page -->
+    	<INCLURE{fond=pied}>   	
+  </div>
+	
+  </div>
+<!-- fin page -->
+#SPIP_CRON
+</body>
+
+</html>

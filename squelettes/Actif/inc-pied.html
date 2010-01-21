@@ -1,0 +1,12 @@
+<div class="pied_page">
+  <?php if ('#CONFIG{FSGT/pied_RSS}' == 'on') { ?><a href="#URL_PAGE{backend}" title="<:syndiquer_site:>">[ <img src="#CHEMIN{feed.png}" alt="<:icone_suivi_activite:>" width="16" height="16" class="format_png" />&nbsp;RSS&nbsp;2.0 ]</a><?php } ?>
+  <?php if ('#CONFIG{FSGT/plan_on}' == 'on') { ?><a href="#URL_PAGE{plan}">[ <:plan_site:> ]</a><?php } ?>
+   <a href="ecrire/">[ <:espace_prive:> ]</a>
+	<?php if ('#CONFIG{FSGT/pied_anomalie}' != '') { ?>
+			<BOUCLE_Art(ARTICLES){id_article=(#CONFIG{FSGT/pied_anomalie})}><a href="#URL_ARTICLE">[ [(#TITRE)] ]</a></BOUCLE_Art>
+	<?php } ?>   
+   <br /><br />
+   Site réalisé avec <a href="http://www.spip.net" title="<:site_realise_avec_spip:>"><img src="#CHEMIN{spip.png}" alt="SPIP" width="48" height="16" class="format_png" /></a> logiciel libre sous licence <a href="http://www.gnu.org/copyleft/gpl.html">GNU/GPL</a>
+</div>
+[(#REM) Utilisation de la balise ID_RUBRIQUE pour porter l'ID Google Analytics]
+<INCLURE{fond=inc-js-google-analytics}{id_rubrique=#CONFIG{FSGT/pied_ID_Analytics}}>

@@ -1,0 +1,58 @@
+<B_principale>
+<BOUCLE_principale(ARTICLES){id_article}>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="#LANG_DIR" lang="#LANG">
+
+<head>
+  <title>[(#TITRE|textebrut) - ][(#NOM_SITE_SPIP|textebrut)]</title>
+  [<link rel="alternate" type="application/pdf" href="#URL_PAGE{article_pdf}|parametre_url{id_article,(#ID_ARTICLE)}" />]
+	[<meta name="description" content="(#INTRODUCTION|couper{150}|textebrut)" />]
+	<INCLURE{fond=inc-head}>
+</head>
+
+<body>
+
+<div id="conteneur">
+		<INCLURE{fond=inc-commun}>    
+   
+    <div id="article"><!-- insertion zone contenu de l'article -->
+<div class="hierarchie">
+	<a href="#URL_PAGE{sommaire}" class="souligne"><:accueil_site:></a>&nbsp;&gt;
+	<BOUCLE_hierarchie(HIERARCHIE){id_article}>
+		[ <a href="#URL_RUBRIQUE" class="souligne">(#TITRE)</a>&nbsp;&gt;]
+	</BOUCLE_hierarchie>
+</div>	
+<!-- ne marche pas			<INCLURE{fond=inc-art-hierarchie}{id_article}> -->
+      	 
+         <div class="imprimer"><!-- "article_pdf.php3?id_article=#ID_ARTICLE" -->
+          <a class="texte1" href="spip.php?page=article-imprim&id_article=#ID_ARTICLE"><img src="#CHEMIN{FSGT/imprimante.gif}" border="0" alt="Version imprimable" /> Imprimer</a><br />
+          <a class="texte1" href="#URL_ARTICLE_PDF"><img src="#CHEMIN{FSGT/pdf.gif}" border="0" /> Version PDF</a>
+         </div> 
+  		   [(#REM) margin:hautpx droitepx basx gauchepx;]
+  		   [<div style="float:left; margin:0px 10px 10px 0px;">(#LOGO_ARTICLE)</div>]
+         [<div class="surtitre">(#SURTITRE)</div><br />] 
+         
+  		   [<div class="titre-article2">(#TITRE)</div>] [<div class="date centrer">le (#DATE|affdate)[, <:par_auteur:> (#LESAUTEURS)]</div><br />]
+  	   	 [<div class="sous-titre">(#SOUSTITRE)</div><br />] 
+         [<div class="chapo">(#CHAPO)</div>]
+			   [<div class="spip_documents">(#TEXTE)</div>]
+			   <P>
+			   [<div class='cadre-e-noir' style=''><div class='cadre-e'><div class='cadre-padding'>
+					<div  dir='ltr' style='font-size: small;' class='verdana1'><p class="spip" align="justify"><b>P.-S.</b>&nbsp;&nbsp;(#PS)</p></div>
+					</div></div></div>]
+			
+			   [<div class="notes">(#NOTES)</div>]
+			
+		<INCLURE{fond=inc-forum-art}{id_article}>
+		    
+	  </div>
+    	
+	<div id="pied"><INCLURE{fond=inc-pied}></div>
+
+</div>  
+</body>
+</html>
+</BOUCLE_principale>
+</B_principale>
+<INCLURE{fond=404}>
+<//B_principale>

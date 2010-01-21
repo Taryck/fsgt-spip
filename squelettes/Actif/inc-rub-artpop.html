@@ -1,0 +1,12 @@
+<B_pop_art>
+	<div class="spip_cadre_liens" >
+    <span class="titreEncadre">Articles les plus populaires</span>
+    <div class="trait_haut"></div>
+		<ul id="menu_liens_art"> 
+		<BOUCLE_pop_art(ARTICLES){popularite>(#CONFIG{FSGT/rub_pop_mini,0}|mult{#POPULARITE_MAX}|div{100})} {par popularite} {inverse} {0,#CONFIG{FSGT/rub_pop_count,0}}>
+			<li>[(#REM) Ne marche pas title="# INTRODUCTION|couper { 80 } " ]
+				<a href="#URL_ARTICLE" class="petit-titre-sommaire" [title="(#INTRODUCTION|supprimer_tags|couper{80})"]>[#POPULARITE% - (#TITRE)]</a>
+			</li>
+		</BOUCLE_pop_art>
+	</div>
+</B_pop_art>

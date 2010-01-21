@@ -1,0 +1,16 @@
+  			<B_rub_sites><!-- zone liens attachees a la rubrique  -->        		
+  			<div class="spip_cadre_liens" > 
+  				<span class="titreEncadre">A visiter</span><div class="trait_haut"></div>
+  		  <BOUCLE_rub_sites(SITES){id_rubrique}{par nom_site}>
+		  <?php if ('#URL_SYNDIC' == '') { ?>
+  				[<ul class="list titreEncadre2">
+          <li><a href="#URL_SITE">(#NOM_SITE)</a></li>
+          </ul>]
+      <?php } else { ?>
+  				[<ul class="list titreEncadre2">
+          <li><a href="[(#ID_SYNDIC|generer_url_site)]">(#NOM_SITE)</a></li>
+          </ul>]
+		  <?php } ?>
+  		  </BOUCLE_rub_sites>
+        </div>
+  		  </B_rub_sites>

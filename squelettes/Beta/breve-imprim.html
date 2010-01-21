@@ -1,0 +1,48 @@
+<BOUCLE_principale(BREVES) {id_breve}>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="#LANG_DIR" lang="#LANG">
+<head>
+<!-- titre de la page -->
+<title>#NOM_SITE_SPIP &gt; [(#TITRE)]</title>
+<meta http-equiv="Content-Type" content="text/html; charset=#CHARSET" />
+<!-- description, mots-clés, auteurs de l'article -->
+<META NAME="Description" CONTENT='[(#DESCRIPTIF|supprimer_tags|texte_script)]' />
+<meta name="Keywords" content="<BOUCLE_keywords(MOTS){id_article}{", "}>#TITRE</BOUCLE_keywords>" />
+<meta name="Author" content="<BOUCLE_author(AUTEURS){id_article}{", "}>#NOM</BOUCLE_author>" />
+  <meta name="robots" content="none" />
+	<meta name="generator" content="FSGT" />
+  [<link rel="shortcut icon" href="(#CHEMIN{logo-fsgt.ico})" />]
+
+</head>
+
+<body>
+<!-- affichage du nom du site et URL article -->
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <B_logo_accueil>
+    <td width="1" nowrap> 
+      <BOUCLE_logo_accueil(SITES){id_syndic=7}>
+      [(#LOGO_SITE||reduire_image{150})] 
+      </BOUCLE_logo_accueil>
+    </td>
+    </B_logo_accueil>
+    <td><font size="4"><strong>#NOM_SITE_SPIP</strong></font></td>
+    <td align="right"><font size="2"> [<a href="(#URL_SITE_SPIP)/#URL_ARTICLE">#URL_SITE_SPIP/#URL_ARTICLE</a>]</font></td>
+  </tr>
+</table>
+<!-- logo & titre de l'article -->
+<table border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr> [
+    <td>(#LOGO_ARTICLE_RUBRIQUE||reduire_image{150})</td>
+    ] [
+    <td><strong><font color="#0000CC" size="6">(#TITRE)</font></strong></td>
+    ] </tr>
+</table>
+[ 
+<p>(#TEXTE|justifier||reduire_image{600})</p>
+]
+</BODY>
+</HTML>
+</BOUCLE_principale>
+<INCLURE{fond=404}>
+<//B_principale>

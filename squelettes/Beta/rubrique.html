@@ -1,0 +1,27 @@
+[(#REM)
+	cette page n'affichera rien elle même, mais nous sert à tester la présence ou non 
+  des mots-clés et d'afficher le squelette correspondant
+]
+<BOUCLE_principale(RUBRIQUES) {id_rubrique}>
+
+[(#REM)
+	si le mot-clé "rubrique-secteurVideo" est attaché à la rubrique de l'article, 
+	on appelle le squelette "rubrique-video"
+]
+<BOUCLE_rub-secteurVideo(MOTS){id_rubrique}{titre = rubrique-secteurVideo}><INCLURE{fond=rubrique-secteurVideo}{id_rubrique}{self=#SELF}></BOUCLE_rub-secteurVideo>
+
+[(#REM)
+	si le mot-clé "rubrique-spa" est attaché à la rubrique de l'article, 
+	on appelle le squelette "rubrique-spa"
+]
+<BOUCLE_rub-culdesac(ARTICLES){id_rubrique}{par date}{inverse}{0,1}{titre_mot=cfg.rub.culdesac}><INCLURE{fond=rubrique-culdesac}{id_rubrique}{id_article}{self=#SELF}></BOUCLE_rub-culdesac>
+
+[(#REM) sinon]
+<INCLURE{fond=rubrique-normale}{id_rubrique}>
+
+<//B_rub-culdesac>
+<//B_rub-secteurVideo>
+
+</BOUCLE_principale>
+<INCLURE{fond=page-404}>
+<//B_principale>

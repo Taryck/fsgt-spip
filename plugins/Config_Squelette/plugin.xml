@@ -1,0 +1,71 @@
+<plugin>
+	<nom> <!-- Nom du plugin -->
+		<multi>
+			[fr]Configuration Squelette FSGT V0.1
+		</multi>
+	</nom>
+	<auteur>        <!-- Auteur du plugin -->
+		Taryck BENSIALI : taryck@bensiali.net
+	</auteur>
+        <version>
+          0.1
+        </version>
+        <etat>
+          dev
+        </etat>
+        <description>
+        <multi>
+					[fr]Ecran de configuration des valeurs affectant le rendu du Squelette FSGT
+          </multi>
+        </description>
+		    <lien>
+		      Prerequis plug-in 'cfg' active.<br/> 
+            [Documentation ->http://spip.aide.fsgt.org/]<br/>
+		        [Configuration->.?exec=cfg&amp;cfg=FSGT]<br/>
+		        [Analyse->.?exec=FSGT_admin]<br/>
+		      <br/>
+		      icons trouv&eacute;s sur [->http://www.veryicon.com/]
+		    </lien>
+        <icon>icon.jpg</icon>
+        <prefix>FSGT</prefix>
+       	<install>base/FSGT_install.php</install>
+	<bouton id='FSGT_Root' parent=>
+		<icone>FSGT-48.png</icone>
+		<titre>FSGT</titre>
+		<url>cfg</url><!-- nom de l'exec, facultatif, par defaut prend l'id -->
+		<args>cfg=FSGT</args>
+	</bouton>        
+	<bouton id='FSGT_Config' parent='FSGT_Root'>
+		<icone>images/plugin-24.gif</icone>
+		<titre>Config Modele</titre>
+		<url>cfg</url><!-- nom de l'exec, facultatif, par defaut prend l'id -->
+		<args>cfg=FSGT</args>
+	</bouton>
+	<bouton id='FSGT_Google' parent='FSGT_Root'>
+		<icone>Google-24.PNG</icone>
+		<titre>Config Google</titre>
+		<url>cfg</url><!-- nom de l'exec, facultatif, par defaut prend l'id -->
+		<args>cfg=FSGT_Google</args>
+	</bouton>
+	<bouton id='FSGT_Ver' parent='FSGT_Root'>
+		<icone>About.png</icone>
+		<titre>Version</titre>
+		<url>fsgt_ver</url>
+		<args></args>
+	</bouton>
+	<bouton id='FSGT_Aide' parent='FSGT_Root'>
+		<icone>Help.png</icone>
+		<titre>Aide</titre>
+	<url>http://spip.aide.fsgt.org/</url>
+		<args></args>
+	</bouton>
+	<bouton id='Aide_FSGT' parent='aide_index'>
+		<icone>Help.png</icone>
+		<titre>Modele</titre>
+	<url>http://spip.aide.fsgt.org/</url>
+		<args></args>
+	</bouton>
+				<necessite id="SPIP" version="[1.9.0;]" />
+				<necessite id="cfg" version="[1.0.0;]" />
+				<chemin dir='' />
+</plugin>

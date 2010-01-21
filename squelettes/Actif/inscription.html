@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="#LANG_DIR" lang="#LANG">
+
+<head>
+<title>[(#NOM_SITE_SPIP|textebrut)]</title>
+	[<meta name="description" content="(#DESCRIPTIF_SITE_SPIP|couper{150}|textebrut)" />]
+	<INCLURE{fond=inc-head}>
+</head>
+
+<body>
+<div id="conteneur">
+		<INCLURE{fond=inc-commun}>    
+  <div id="article"><!-- insertion zone contenu de l'article -->
+   
+		<div style="text-align: center; width: 400px; margin: 0 auto; padding: 3em 0;">
+		<h3 class="spip">
+			#LOGO_SITE_SPIP<br />
+			#NOM_SITE_SPIP<br />
+			<small>Inscription</small>
+		</h3>
+
+    #FORMULAIRE_INSCRIPTION
+    
+		</div>	    		
+	</div>  
+
+	<div id="pied"><INCLURE{fond=inc-pied}></div>
+</div>  
+
+</body>
+</html>

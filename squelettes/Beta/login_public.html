@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="#LANG_DIR" lang="#LANG">
+
+<head>
+<title>[(#NOM_SITE_SPIP|textebrut)]</title>
+	[<meta name="description" content="(#DESCRIPTIF_SITE_SPIP|couper{150}|textebrut)" />]
+	<INCLURE{fond=inc-head}>
+</head>
+
+<body>
+<div id="conteneur">
+		<INCLURE{fond=inc-commun}>    
+  <div id="article"><!-- insertion zone contenu de l'article -->
+   
+		<div style="text-align: center; width: 400px; margin: 0 auto; padding: 3em 0;">
+		<h3 class="spip">
+			#LOGO_SITE_SPIP<br />
+			#NOM_SITE_SPIP<br />
+			<small>Identification</small>[(#REM)<:login_acces_public:>]
+		</h3>
+
+		#MENU_LANG_ECRIRE
+	
+		[(#FORMULAIRE_LOGIN{#URL_PAGE{sommaire}})]
+		<p class="retour">
+			[&#91;<a href="#URL_PAGE{identifiants,focus=nom_inscription}&amp;mode=(#URL_SITE_SPIP|tester_config{1comite})" target="spip_pass" onclick="javascript:window.open(this.href, 'spip_pass', 'scrollbars=yes, resizable=yes, width=480, height=400'); return false;"><:login_sinscrire:></a>&#93;]
+			[&#91;<a href="#URL_PAGE{spip_inscription,focus=nom_inscription}&amp;mode=(#URL_SITE_SPIP|tester_config{mode_inscription})" target="spip_pass" onclick="javascript:window.open(this.href, 'spip_pass', 'scrollbars=yes, resizable=yes, width=480, height=400'); return false;"><:login_sinscrire:></a>&#93;]
+		 	&#91;<a href="#URL_PAGE{spip_pass}" target="spip_pass" onclick="javascript:window.open(this.href, 'spip_pass', 'scrollbars=yes, resizable=yes, width=500, height=350'); return false;"><:login_motpasseoublie:></a>&#93;
+		</p>
+
+		</div>	    		
+	</div>  
+
+	<div id="pied"><INCLURE{fond=inc-pied}></div>
+</div>  
+
+</body>
+</html>

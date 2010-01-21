@@ -1,0 +1,8 @@
+        <B_ss_rub><!-- zone sous-rubriques de la rubrique courante  -->  		      		    
+          <div class="spip_cadre_liens">
+          <span class="titreEncadre">Dans la même rubrique</span><div class="trait_haut"></div>    
+          <BOUCLE_ss_rub(RUBRIQUES){id_parent}{doublons}{par titre}{exclus}>
+          [<ul id="menu_liens_rub"><li><a href="#URL_RUBRIQUE">(#TITRE)</a></li></ul>]
+          </BOUCLE_ss_rub>
+          </div>
+        </B_ss_rub>

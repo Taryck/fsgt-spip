@@ -1,0 +1,37 @@
+<plugin>
+        <nom> <!-- Nom du plugin -->
+          <multi>
+					[fr]FSGT : Modif mot de Passe depuis site Public
+					</multi>
+        </nom>
+        <auteur><!-- Auteur du plugin -->
+        Taryck BENSIALI : taryck@bensiali.net
+        </auteur>
+        <version>
+          0.2
+        </version>
+        <etat>
+          test
+        </etat>
+        <description>
+        <multi>
+					[fr]Modification du mot de Passe depuis le site Public grace &agrave; la balise <b>#URL_NOUVMDP</b>	<br />
+					Ce plug in se base sur la fonctionalit&eacute; d'oubli de mot de passe en courcircuitant l'op&eacute;ration d'envoi de l'url.<br />
+					<b>AVERTISSEMENT :</b> Les cons&eacute;quence en terme de s&eacute;curit&eacute; n'ont pu &ecirc;tre &eacute;valu&eacute;e puisque je ne suis qu'un SPIPeur d&eacute;butant. A vous de juger.
+					<br />
+  				<u><b>Note pour les versions de SPIP inf&eacute;rieurs &agrave; 2.0 :</b></u> utiliser la nouvelle balise <b>#AUTEUR_SESSION</b> pour afficher le nom de l'auteur.
+  				<br /><br />
+					note : Ce plugin a &eacute;t&eacute; r&eacute;alis&eacute; par un b&eacute;n&eacute;vole de la FSGT (F&eacute;d&eacute;ration Sportive et Gymnique du Travail) section plong&eacute;e sous-marine.
+				Si vous ne savez pas comment monter un club sportif ou pratiquer du sport dans votre comit&eacute; d'entreprise, contactez nous.<br />
+          </multi>
+        </description>
+		    <lien>
+		    		[Documentation SPIP-Contrib->http://www.spip-contrib.net/Modif-mpd-Site-Public] [Documentation Plugins SPIP->http://plugins.spip.net/Modif-MdP-Site-Public]
+            <br/><br/>
+            [Site FSGT->http://www.fsgt.org/]<br />
+            [Site FSGT Plong&eacute;e->http://www.fsgt.org/]<br />
+		    </lien>
+        <icon>icon.jpg</icon>
+        <prefix>FSGT_MPSP</prefix>
+		    <fonctions>FSGT_MPSP_fonctions.php</fonctions>
+</plugin>

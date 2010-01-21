@@ -1,0 +1,46 @@
+#CACHE{7200}
+#SPIP_CRON
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="#LANG_DIR" lang="#LANG">
+
+<head>
+  <title>[(#NOM_SITE_SPIP|textebrut)]- Abonnement</title>
+	[<meta name="description" content="(#INTRODUCTION|couper{150}|textebrut)" />]
+	<INCLURE{fond=inc-head}>
+	<style type="text/css">
+	<!--	
+	.cadre-abonnement {
+		/*border: 1px #000000 solid;*/
+	        text-align: justify;
+	        width:500px;
+	        padding: 10px;
+	        margin-left: auto;
+	        margin-right: auto;
+	        margin-bottom: 10px;
+		-moz-border-radius: 6px;
+		border-radius: 6px;
+	}
+	-->
+	</style>
+</head>
+
+<body>
+
+<div id="conteneur">
+		<INCLURE{fond=inc-commun}>	   
+    <div id="article"><!-- insertion zone contenu de l'article -->        <br>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             		<div class="titre-article2">Abonnement aux lettres d'infos</div>
+ 
+	<div class='cadre-abonnement'>
+	[(#ENV{d}|?{'',' '})
+	#FORMULAIRE_ABONNEMENT
+	<br /> ]		
+	#FORMULAIRE_MODIF_ABONNEMENT </div>						
+         <div id="pied">
+          <!-- insertion pied de page -->
+          <INCLURE{fond=inc-pied}>
+         </div>
+
+</div>  
+
+</body>
+</html>

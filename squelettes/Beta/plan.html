@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="#LANG_DIR" lang="#LANG">
+<head>
+	<title><:plan_site:> - [(#NOM_SITE_SPIP|textebrut)]</title>
+	[<meta name="description" content="(#DESCRIPTIF_SITE_SPIP|couper{150}|textebrut)" />]
+  <link rel="stylesheet" href="squelettes/beta/habillage.css" type="text/css" media="projection, screen, tv" />
+	<INCLURE{fond=inc-head}>
+</head>
+
+<body>
+
+<div id="conteneur">
+		<INCLURE{fond=inc-commun}>    
+
+    <div id="article"><!-- insertion zone contenu de l'article -->
+			<div class="hierarchie"><a href="#URL_SITE_SPIP/"><:accueil_site:></a> &gt; <:plan_site:></div>
+
+			<div class="titre-article2" style="float:right; margin:0px 0px 10px 10px;">
+				#LOGO_SITE
+				<h1 class="titre">#NOM_SITE_SPIP</h1>
+			</div>
+
+<?php if ('#CONFIG{FSGT/plan_on}' == 'on') { ?>
+			<B_secteurs>
+				<BOUCLE_secteurs(RUBRIQUES) {racine} {par titre} {pagination #CONFIG{FSGT/plan_rub_page,10}}>
+				[<h2 style="margin-bottom : 0px;"><a href="#URL_RUBRIQUE">(#TITRE)</a></h2>]
+<?php if ('#CONFIG{FSGT/plan_art}' == 'on') { ?>
+							<B_art_r>
+							<ul style="margin:0px 0px 0px 10px;">
+								<BOUCLE_art_r(ARTICLES) {id_rubrique} {par titre}>
+								[<li><a href="#URL_ARTICLE" class="petit-titre-sommaire">(#TITRE)</a>[<span class="date"> | (#DATE|affdate)</span>]</li>]
+								</BOUCLE_art_r>
+							</ul>
+							</B_art_r>
+<?php } ?> <!-- Fin articles -->
+<?php if ('#CONFIG{FSGT/plan_brv}' == 'on') { ?>
+							<B_breves>
+							<ul style="margin:0px 0px 0px 10px;">
+								<BOUCLE_breves(BREVES) {id_rubrique} {par date} {inverse}>
+								[<li><a href="#URL_BREVE" class="descriptif-album">(#TITRE)</a>[<span class="date"> | (#DATE|affdate)</span>]</li>]
+								</BOUCLE_breves>
+							</ul>
+							</B_breves>
+<?php } ?> <!-- Fin articles -->
+  		   <!-- margin:hautpx droitepx basx gauchepx; -->
+					<B_rubriques>
+					<ul style="margin:0px 0px 0px 25px;">
+						<BOUCLE_rubriques(RUBRIQUES) {id_parent} {par titre}>
+						<li>[<strong><a href="#URL_RUBRIQUE">(#TITRE)</a></strong>]
+<?php if ('#CONFIG{FSGT/plan_art}' == 'on') { ?>
+							<B_articles>
+							<ul style="margin:0px 0px 0px 10px;">
+								<BOUCLE_articles(ARTICLES) {id_rubrique} {par titre}>
+								[<li><a href="#URL_ARTICLE" class="petit-titre-sommaire">(#TITRE)</a>[<span class="date"> | (#DATE|affdate)</span>]</li>]
+								</BOUCLE_articles>
+							</ul>
+							</B_articles>
+<?php } ?> <!-- Fin articles -->
+							<BOUCLE_sous_rubriques(BOUCLE_rubriques)></BOUCLE_sous_rubriques>
+						</li>
+						</BOUCLE_rubriques>
+
+					</ul>
+					</B_rubriques>
+
+				</BOUCLE_secteurs>
+	     	<div class="pagination">[(#PAGINATION{page})]</div>
+			</B_secteurs>
+<?php } ?>
+		</div><!-- fin contenu -->
+
+    <div id="pied"><INCLURE{fond=inc-pied}></div>
+</div>  
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<BOUCLE_document (DOCUMENTS) {id_document}>
+[(#REM)
+
+	Modele pour <img>
+
+	Si on est en mode "vignette" ou appele avec embed=oui,
+	on affiche l'image complete ; sinon le logo
+
+	Si un lien est passe #ENV{lien} on ajoute le a href
+	ou on truque le #URL_DOCUMENT
+
+]
+[(#SET{
+	image,
+		#MODE|=={vignette}
+		|sinon{#ENV{embed}}
+		|?{' '}
+})]
+#SET{hauteur,#ENV{hauteur,#HAUTEUR}} #SET{largeur,#ENV{largeur,#LARGEUR}}
+[(#REM)
+	Si hauteur est pas vide et si largeur est vide on calcule largeur proportionnelement
+]
+[(#ENV{hauteur}|=={''}|?{'',' '})
+	[(#ENV{largeur}|=={''}|?{' ',''})
+			#SET{largeur,#EVAL{#LARGEUR|mult{#ENV{hauteur,#HAUTEUR}}|div{#HAUTEUR}}}
+	]
+]
+[(#REM)
+	Si largeur est pas vide et si hauteur est vide on calcule hauteur proportionnelement
+]
+[(#ENV{largeur}|=={''}|?{'',' '})
+	[(#ENV{hauteur}|=={''}|?{' ',''})
+			#SET{hauteur,#EVAL{#HAUTEUR|mult{#ENV{largeur,#LARGEUR}}|div{#LARGEUR}}}
+	]
+]
+[
+
+	(#REM) image complete ?
+
+][(#GET{image})
+<span class='spip_document_#ID_DOCUMENT spip_documents[ spip_documents_(#ENV{align})][ (#ENV{class})] spip_lien_ok'[ style='float:(#ENV{align}|match{left|right});[ width:(#GET{largeur})px;]']>
+[<a href="(#ENV{lien})"[ class="(#ENV{lien_class})"]>]<img src='#URL_DOCUMENT'[ width="(#GET{largeur})"][ height="(#GET{hauteur})"] alt="[(#TITRE|texte_backend)]"[ title="(#TITRE|texte_backend)"] />[(#ENV{lien}|?{</a>})]</span>
+][
+
+	(#REM) sinon logo document + lien + alt + title etc
+
+][(#GET{image}|?{'',' '})
+<span class='spip_document_#ID_DOCUMENT spip_documents[ spip_documents_(#ENV{align})][ (#ENV{class})] spip_lien_ok'[ style='float:(#ENV{align}|match{left|right});[ width:(#LOGO_DOCUMENT||largeur)px;]']><a href="[(#ENV{lien}|sinon{#URL_DOCUMENT})]"[ (#ENV{lien}|?{'',type="#MIME_TYPE"})][ title="(#TITRE|texte_backend)"]>[(#LOGO_DOCUMENT||inserer_attribut{alt,#TITRE|strlen|?{#TITRE {#TYPE_DOCUMENT},#TYPE_DOCUMENT}})]</a></span>
+]</BOUCLE_document>

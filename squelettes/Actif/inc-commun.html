@@ -1,0 +1,89 @@
+<INCLURE{fond=inc-entete}>
+<B_rub>
+  <div id="head2">
+  	<ul id="menu_sup">
+	<BOUCLE_rub(RUBRIQUES){titre_mot=cfg.menu.sup.rub}{par titre}>
+		<li><a href="#URL_RUBRIQUE"  title="[(#TITRE)][ - (#DESCRIPTIF|supprimer_tags)]">[(#TITRE)]</a></li>
+	</BOUCLE_rub>
+		</ul>
+	</div>
+	</B_rub>
+<//B_rub>
+<div id="menu">
+	<script type="text/javascript">
+		function hide_ID(ID)
+{
+    zID = document.getElementById(ID);
+    zID.style.display = 'none';
+};
+		function show_ID(ID)
+{
+    zID = document.getElementById(ID);
+    zID.style.display = 'block';
+}
+	</script>
+  <div>
+  Rechercher sur :<br />
+    <input type="RADIO" name="Search_type" value="1" onclick="hide_ID('bc75dba0-eb04-11dd-ba2f-0800200c9a66'); show_ID('8949e1e0-eb04-11dd-ba2f-0800200c9a66'); "  checked="checked" />&nbsp;site&nbsp;
+    <input type="RADIO" name="Search_type" value="2" onclick="hide_ID('8949e1e0-eb04-11dd-ba2f-0800200c9a66'); show_ID('bc75dba0-eb04-11dd-ba2f-0800200c9a66'); " />&nbsp;fsgt.org
+	</div>
+	
+	<div id="8949e1e0-eb04-11dd-ba2f-0800200c9a66">
+		<div >#FORMULAIRE_RECHERCHE</div>
+  	<hr />
+  </div>
+  
+  <div id="bc75dba0-eb04-11dd-ba2f-0800200c9a66" class="formulaire_spip formulaire_recherche">
+<form action="#URL_PAGE{}" id="cse-search-box">
+    <input type="hidden" name="page" value="recherche-google" />
+    <input type="hidden" name="cx" value="partner-pub-7578374877463974:aj4ndsqhic2" />
+    <input type="hidden" name="cof" value="FORID:10" />
+    <input type="hidden" name="ie" value="ISO-8859-1" />
+		<input type="text" class="formrecherche" name="q" id="recherche" value="Rechercher" onfocus="this.value='';" />
+    <input type="submit" name="submit" class="bouton_ok" value="OK"  align="center">
+<!--    <input type="submit" name="sa" value="Rechercher" /> -->
+</form>
+<script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=cse-search-box&amp;lang=fr"></script>  
+  <hr />
+</div>
+	<script type="text/javascript">show_ID('8949e1e0-eb04-11dd-ba2f-0800200c9a66'); hide_ID('bc75dba0-eb04-11dd-ba2f-0800200c9a66');</script>
+
+	<ul id="menu_lat">
+[(#SESSION{id_auteur}|?{' '})<li><a href="#URL_LOGOUT" rel="nofollow"><:icone_deconnecter:></a></li><li><a href="[(#URL_PAGE{Modif_Pwd_Public})]" rel="nofollow" class='login_modal'>Modifier mot de passe</a></li>
+][(#SESSION{id_auteur}|?{'',' '})<li><a href="[(#URL_PAGE{inscription}|parametre_url{url,#SELF})]" rel="nofollow" class='login_modal'><:inscription:></a></li><li><a href="[(#URL_PAGE{login_public}|parametre_url{url,#SELF})]" rel="nofollow" class='login_modal'><:lien_connecter:></a></li>]
+	<B_secteur>
+  	<hr />
+		<BOUCLE_secteur(RUBRIQUES){titre_mot=cfg.menu.lat}{par num titre}>
+			<li><a href="#URL_RUBRIQUE"  title="[(#TITRE)][ - (#DESCRIPTIF|supprimer_tags)]">[(#TITRE)]</a></li>
+		</BOUCLE_secteur>
+	</B_secteur>
+	
+<?php if ('#CONFIG{FSGT/gads_on}' == 'on' && '#CONFIG{FSGT/gads_lat_1_on}' == 'on') { ?>[<hr /><div align="center">(#CONFIG{FSGT/gads_lat_1_code})</div>]<?php } ?>
+	
+	<B_site>
+  	<hr />
+		<BOUCLE_site(SITES){titre_mot=cfg.menu.lat}{par nom_site}>
+			<?php if ('#URL_SYNDIC' == '') { ?>
+  			[<li><a href="#URL_SITE" [title="(#DESCRIPTIF|supprimer_tags)"] target="_blank">(#NOM_SITE)</a></li>]
+	    <?php } else { ?>
+				[<li><a href="[(#ID_SYNDIC|generer_url_entite{'site'})]" title="#DESCRIPTIF">(#NOM_SITE)</a></li>]
+		  <?php } ?>
+		</BOUCLE_site>
+	</B_site>
+	</ul>
+
+<?php if ('#CONFIG{FSGT/gads_on}' == 'on' && '#CONFIG{FSGT/gads_lat_2_on}' == 'on') { ?>[<div align="center">(#CONFIG{FSGT/gads_lat_2_code})</div>]<?php } ?>
+
+<!-- zone edito -->
+<B_edito>
+	<div style="margin:5px 0px 0px 0px;" class="titreEncadre filet">Mise en avant</div>
+	<BOUCLE_edito(ARTICLES){titre_mot=cfg.menu.lat}{par date}{inverse}{0,#CONFIG{FSGT/menu_lat_art_count,0}}>	   
+		[<div class="petit-titre-sommaire"><a href="#URL_ARTICLE">(#TITRE)</a></div>]
+		[<div class="texte_edito" style="margin:-10px 0px -10px 0px;">(#INTRODUCTION|couper{80}|justifier)</div>]
+		<hr />         
+	</BOUCLE_edito> 
+</B_edito>
+
+<?php if ('#CONFIG{FSGT/gads_on}' == 'on' && '#CONFIG{FSGT/gads_lat_3_on}' == 'on') { ?>[<div align="center">(#CONFIG{FSGT/gads_lat_3_code})</div>]<?php } ?>
+
+</div>
